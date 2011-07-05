@@ -4,6 +4,7 @@ class GunplaController < ApplicationController
 
   def index
 	@gunplas = Gunpla.all
+	@page_title = "Elenco Gundam"
 	cosmicCsvImport
   end
   

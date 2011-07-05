@@ -1,0 +1,9 @@
+#side {
+	float: left;
+	width: 8em;
+	background: grey;
+}
+
+#main {
+	margin-left: 9em;
+}

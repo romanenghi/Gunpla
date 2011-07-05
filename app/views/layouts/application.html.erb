@@ -6,9 +6,20 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
-<body>
-
-<%= yield %>
-
+<body id="store">
+	<div id="banner">
+		<%= image_tag("logo.png") %>
+		<%= @page_title || "Gunpla List" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<a href "http://">Elenco</a><br />
+			<a href "http://">Importa da file</a><br />
+			<a href "http://">Configura</a><br />
+		</div>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>
