@@ -1,0 +1,23 @@
+<h1>Gunpla - Elenco prodotti</h1>
+<%= form_tag do %>
+<%= text_field_tag(:q) %>
+<% end %>
+<table>
+  <tr>
+    <th>Codice</th>
+	<th>Cosmic</th>
+	<th>Descrizione Cosmic<th>
+	<th>Hlj</th>
+	<th>1999</th>
+	<th>Descrizione</th>
+	<th>Descrizione Hlj</th>
+	<th>Descrizione 1999</th>
+  </tr
+<% @gunplas.each do |gunpla| %>
+	<tr>
+		<td><%= gunpla.codiceProdotto %></td>
+		<td><%= gunpla.codiceCosmic %></td>
+		<td><%= gunpla.descrizioneCosmic %></td>
+	</tr>
+<% end %>
+</table>

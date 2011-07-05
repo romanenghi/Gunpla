@@ -1,0 +1,2 @@
+module GunplaHelper
+end
