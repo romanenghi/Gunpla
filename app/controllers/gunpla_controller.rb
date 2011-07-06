@@ -35,17 +35,20 @@ class GunplaController < ApplicationController
   
   def import1999Data
 		@gunpla = Gunpla.find(params[:id])
-		if @gunpla.janCode == nil then self.importHljData end
-		# prima fase: cercare i prodotti tramite il JanCode e ricavarne il productCode
 		baseUrl = "http://www.1999.co.jp/search_e.asp?Typ1_c=101&scope=0&scope2=0&itkey="
-		url = baseUrl + @gunpla.janCode
-		productUrl1999 = "nessuna corrispondenza"
+		
+		if params[:q] != nil then
+			url = baseUrl + params[:q]
+		else 
+			if @gunpla.janCode == nil then self.importHljData end
+			url = baseUrl + @gunpla.janCode
+		end
 		doc = Nokogiri.HTML(open(url))
 		n = 0
 		doc.xpath('//a').each do |extract|
 			tmpUrl = extract['href'][/\/eng\/\d+/]
 		    if tmpUrl != nil then 
-				productUrl1999 = "http://www.1999.co.jp" + tmpUrl 
+				@productUrl1999 = "http://www.1999.co.jp" + tmpUrl 
 				n = n + 1
 			end		
  		end
@@ -54,8 +57,7 @@ class GunplaController < ApplicationController
 		if n > 2 then 
 			@status = "Prodotto non univoco, impossibile importare"
 		elsif n == 2 then
-			puts @productUrl1999
-			doc = Nokogiri.HTML(open(productUrl1999))
+			doc = Nokogiri.HTML(open(@productUrl1999))
 			contenuto = doc.xpath('//div[@class="right"]').first.content
 			@categoria = contenuto[/Original.*/].gsub("Original:","").strip
 			@series = contenuto[/Series.*/].gsub("Series:","").strip
@@ -69,7 +71,7 @@ class GunplaController < ApplicationController
 			#	puts imageUrl
 			#	n = n + 1
 			#end
-			@gunpla.codice1999 = productUrl1999.gsub("http://www.1999.co.jp/eng/","")
+			@gunpla.codice1999 = @productUrl1999.gsub("http://www.1999.co.jp/eng/","")
 			@gunpla.save
 			@status = "Importazione da 1999 avvenuta con successo"
 		else

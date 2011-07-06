@@ -12,17 +12,19 @@
 	<tr>
 		<td>
 		<%= form_tag(getHljData_path, :method => "get") do %>
-			<%= hidden_field_tag(:codiceHlj, @gunpla.codiceHlj) %>
 			<%= hidden_field_tag(:id, @gunpla.id) %>
 			<%= submit_tag("Aggiorna Hlj data") %>
 		<% end %>
 		<td>
+	</tr>
+	<tr>
+		<td>
 		<%= form_tag(get1999Data_path, :method => "get") do %>
-			<%= hidden_field_tag(:codiceHlj, @gunpla.janCode) %>
+			<%= label_tag(:q, "Codice 1999 - opzionale") %>
+			<%= text_field_tag(:q)  %>
 			<%= hidden_field_tag(:id, @gunpla.id) %>
 			<%= submit_tag("Aggiorna 1999 data") %>
 		<% end %>
-		</td>
 		</td>
 	</tr>
 </table>
