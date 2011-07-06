@@ -1,5 +1,6 @@
 Gundam::Application.routes.draw do
   get "gunpla/index"
+  get "gunpla/cosmicimport"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

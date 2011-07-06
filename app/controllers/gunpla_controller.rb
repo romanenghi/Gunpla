@@ -8,8 +8,12 @@ class GunplaController < ApplicationController
 	cosmicCsvImport
   end
   
+  def cosmicimport
+	@page_title = "Importazione da cosmic"
+  end
+  
   def cosmicCsvImport
-	CSV.foreach("files/arrivi_gunpla.csv") do |row|
+	CSV.foreach("files/gunpla.csv") do |row|
     if row[0].to_f.to_s != "0.0" then
 	    gunpla = Gunpla.new
 		gunpla.codiceCosmic = row[0] # Seleziona la colonna n. 0, corrispondente al codice cosmic
