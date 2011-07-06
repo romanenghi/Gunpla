@@ -1,0 +1,28 @@
+<h1>Gunpla - Elenco prodotti</h1>
+<table>
+	<tr>
+		<td>Codice Prodotto</td>
+		<td>descrizioneHlj</td>
+	</tr>
+	<tr>
+		<td><%= @gunpla.codiceProdotto %></td>
+		<td><%= @gunpla.descrizioneHlj %></td>
+		<td><%= @gunpla.janCode %></td>
+	</tr>
+	<tr>
+		<td>
+		<%= form_tag(getHljData_path, :method => "get") do %>
+			<%= hidden_field_tag(:codiceHlj, @gunpla.codiceHlj) %>
+			<%= hidden_field_tag(:id, @gunpla.id) %>
+			<%= submit_tag("Aggiorna Hlj data") %>
+		<% end %>
+		<td>
+		<%= form_tag(get1999Data_path, :method => "get") do %>
+			<%= hidden_field_tag(:codiceHlj, @gunpla.janCode) %>
+			<%= hidden_field_tag(:id, @gunpla.id) %>
+			<%= submit_tag("Aggiorna 1999 data") %>
+		<% end %>
+		</td>
+		</td>
+	</tr>
+</table>

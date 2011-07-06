@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20110704214357) do
     t.string   "descrizioneHlj"
     t.string   "descrizione1999"
     t.string   "descrizioneCosmic"
+    t.string   "janCode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,20 +1,39 @@
 <h1>Gunpla - Elenco prodotti</h1>
-<table>
-  <tr>
-    <th>Codice</th>
-	<th>Cosmic</th>
-	<th>Descrizione Cosmic<th>
-	<th>Hlj</th>
-	<th>1999</th>
-	<th>Descrizione</th>
-	<th>Descrizione Hlj</th>
-	<th>Descrizione 1999</th>
-  </tr
-<% @gunplas.each do |gunpla| %>
-	<tr>
-		<td><%= gunpla.codiceProdotto %></td>
-		<td><%= gunpla.codiceCosmic %></td>
-		<td><%= gunpla.descrizioneCosmic %></td>
-	</tr>
-<% end %>
+<table id="box-table-a">
+	<!-- Table header -->  
+	<thead>
+		<tr>
+			<th scope="col"></th>
+			<th scope="col">Codice</th>
+			<th scope="col">Cosmic</th>
+			<th scope="col">Descrizione Cosmic</th>
+			<th scope="col">Descrizione Hlj</th>
+			<th scope="col">1999</th>
+			<th scope="col">Descrizione</th>
+			<th scope="col">Descrizione Hlj</th>
+			<th scope="col">Descrizione 1999</th>
+		</tr>
+	</thead>
+	
+	<!-- Table body --> 
+	<tbody>
+	<% if @gunplas.length > 0 %>
+	<% @gunplas.each do |gunpla| %>
+		<tr>
+			<td><%= link_to 'Show', gunpla %></td>
+			<td><%= gunpla.codiceProdotto %></td>
+			<td><%= gunpla.codiceCosmic %></td>
+			<td><%= gunpla.descrizioneCosmic %></td>
+			<td><%= gunpla.descrizioneHlj %></td>
+			<td><%= gunpla.codiceHlj %></td>
+			<td><%= gunpla.codice1999 %></td>
+			<td><%= gunpla.janCode %></td>
+		</tr>
+	<% end %>
+	<% else %>
+		<tr>
+			<td>Elenco vuoto! Nessun Gundam memorizzato</td>
+		</tr>
+	<% end %>
+	</tbody>
 </table>

@@ -10,6 +10,7 @@ class CreateGunplas < ActiveRecord::Migration
 	  t.string :descrizioneHlj
 	  t.string :descrizione1999
 	  t.string :descrizioneCosmic
+	  t.string :janCode
       t.timestamps
     end
   end

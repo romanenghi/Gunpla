@@ -1,15 +1,79 @@
 require 'csv'
+require 'open-uri'
+require 'nokogiri'
 
 class GunplaController < ApplicationController
 
   def index
 	@gunplas = Gunpla.all
 	@page_title = "Elenco Gundam"
-	cosmicCsvImport
   end
   
   def cosmicimport
 	@page_title = "Importazione da cosmic"
+	cosmicCsvImport
+  end
+  
+  def show
+	@gunpla = Gunpla.find(params[:id])
+	@page_title = @gunpla.codiceProdotto + @gunpla.descrizioneCosmic
+  end
+  
+  def importHljData 
+		@gunpla = Gunpla.find(params[:id])
+		baseUrl = "http://wholesale.hlj.com/vendors/backend/wholesale_worksheet/scripts/handler/lookup?reqItemCode=CODE&custId=172599"
+		baseUrl["CODE"]= params[:codiceHlj]
+		url = baseUrl
+		doc = open(url).read
+		docJson = JSON.parse(doc)
+		puts docJson.inspect
+		@gunpla.descrizioneHlj = docJson['itemName']
+		@gunpla.janCode = docJson['janCode']
+		@gunpla.save
+		@status = "Importazione avvenuta con successo"
+  end
+  
+  def import1999Data
+		@gunpla = Gunpla.find(params[:id])
+		if @gunpla.janCode == nil then self.getHljData end
+		# prima fase: cercare i prodotti tramite il JanCode e ricavarne il productCode
+		baseUrl = "http://www.1999.co.jp/search_e.asp?Typ1_c=101&scope=0&scope2=0&itkey="
+		url = baseUrl + @janCode
+		@productUrl1999 = "nessuna corrispondenza"
+		doc = Nokogiri.HTML(open(url))
+		n = 0
+		doc.xpath('//a').each do |extract|
+			tmpUrl = extract['href'][/\/eng\/\d+/]
+		    if tmpUrl != nil then 
+				@productUrl1999 = "http://www.1999.co.jp" + tmpUrl 
+				n = n + 1
+			end		
+ 		end
+		
+		if n > 2 then 
+			puts "attenzione prodotto non univoco nella ricerca su 1999 - premere un tasto per continuare"
+			gets
+		elsif n == 2 then
+			puts @productUrl1999
+			doc = Nokogiri.HTML(open(@productUrl1999))
+			contenuto = doc.xpath('//div[@class="right"]').first.content
+			@categoria = contenuto[/Original.*/].gsub("Original:","").strip
+			@series = contenuto[/Series.*/].gsub("Series:","").strip
+			puts @categoria
+			puts @series
+			#puts contenuto[/Scale.*/]
+			#puts contenuto[/Series.*/]
+			#puts contenuto[/Original.*/]
+			#n = 0
+			#doc.xpath('//div[@class="right"]/table/tr/td/span[@class="imgbox"]/a/img').each do |extract|
+			#	imageUrl = extract['src'].gsub("_s","")
+			#	download(imageUrl, "images/" + @nomeProdotto + n.to_s + ".jpg")
+			#	puts imageUrl
+			#	n = n + 1
+			#end
+		else
+			puts "nessuna corrispondenza su 1999"
+		end
   end
   
   def cosmicCsvImport
