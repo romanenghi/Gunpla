@@ -22,7 +22,7 @@ class GunplaController < ApplicationController
   def importHljData 
 		@gunpla = Gunpla.find(params[:id])
 		baseUrl = "http://wholesale.hlj.com/vendors/backend/wholesale_worksheet/scripts/handler/lookup?reqItemCode=CODE&custId=172599"
-		baseUrl["CODE"]= params[:codiceHlj]
+		baseUrl["CODE"]= @gunpla.codiceHlj
 		url = baseUrl
 		doc = open(url).read
 		docJson = JSON.parse(doc)
@@ -35,32 +35,30 @@ class GunplaController < ApplicationController
   
   def import1999Data
 		@gunpla = Gunpla.find(params[:id])
-		if @gunpla.janCode == nil then self.getHljData end
+		if @gunpla.janCode == nil then self.importHljData end
 		# prima fase: cercare i prodotti tramite il JanCode e ricavarne il productCode
 		baseUrl = "http://www.1999.co.jp/search_e.asp?Typ1_c=101&scope=0&scope2=0&itkey="
-		url = baseUrl + @janCode
-		@productUrl1999 = "nessuna corrispondenza"
+		url = baseUrl + @gunpla.janCode
+		productUrl1999 = "nessuna corrispondenza"
 		doc = Nokogiri.HTML(open(url))
 		n = 0
 		doc.xpath('//a').each do |extract|
 			tmpUrl = extract['href'][/\/eng\/\d+/]
 		    if tmpUrl != nil then 
-				@productUrl1999 = "http://www.1999.co.jp" + tmpUrl 
+				productUrl1999 = "http://www.1999.co.jp" + tmpUrl 
 				n = n + 1
 			end		
  		end
 		
+		
 		if n > 2 then 
-			puts "attenzione prodotto non univoco nella ricerca su 1999 - premere un tasto per continuare"
-			gets
+			@status = "Prodotto non univoco, impossibile importare"
 		elsif n == 2 then
 			puts @productUrl1999
-			doc = Nokogiri.HTML(open(@productUrl1999))
+			doc = Nokogiri.HTML(open(productUrl1999))
 			contenuto = doc.xpath('//div[@class="right"]').first.content
 			@categoria = contenuto[/Original.*/].gsub("Original:","").strip
 			@series = contenuto[/Series.*/].gsub("Series:","").strip
-			puts @categoria
-			puts @series
 			#puts contenuto[/Scale.*/]
 			#puts contenuto[/Series.*/]
 			#puts contenuto[/Original.*/]
@@ -71,8 +69,11 @@ class GunplaController < ApplicationController
 			#	puts imageUrl
 			#	n = n + 1
 			#end
+			@gunpla.codice1999 = productUrl1999.gsub("http://www.1999.co.jp/eng/","")
+			@gunpla.save
+			@status = "Importazione da 1999 avvenuta con successo"
 		else
-			puts "nessuna corrispondenza su 1999"
+			@status = "nessuna corrispondenza su 1999"
 		end
   end
   
