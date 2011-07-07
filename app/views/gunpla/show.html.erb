@@ -1,4 +1,27 @@
-<h1>Gunpla - Elenco prodotti</h1>
+<div id="baseData">
+Caratteristiche anagrafica interna (Starshop Brescia)
+<table id="box-table-a">
+<!-- Table header -->  
+	<thead>
+		<tr>
+			<th scope="col">Codice Prodotto</th>
+		</tr>
+	</thead>
+	<tr>
+		<td><%= @gunpla.codiceProdotto %></td>
+		<td><%= @gunpla.descrizioneHlj %></td>
+		<td><%= @gunpla.janCode %></td>
+	</tr>
+
+</table>
+
+</div>
+<div id="1999Data">
+Caratteristiche estratte da 1999
+</div>
+<div id="HlJData">
+Caratteristiche estratte Hobby Link Japan
+</div>
 <table>
 	<tr>
 		<td>Codice Prodotto</td>
@@ -28,3 +51,4 @@
 		</td>
 	</tr>
 </table>
+

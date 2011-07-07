@@ -1,0 +1,6 @@
+﻿$("#janCode<%=@gunpla.id %>")
+    .bind("ajax:success", function(){
+        $(this).html("<%= @gunpla.janCode %>");
+		$("#descrizioneHlj<%=@gunpla.id %>").html("<%= @gunpla.descrizioneHlj %>");
+    });
+

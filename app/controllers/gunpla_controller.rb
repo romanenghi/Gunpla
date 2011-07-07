@@ -7,6 +7,10 @@ class GunplaController < ApplicationController
   def index
 	@gunplas = Gunpla.all
 	@page_title = "Elenco Gundam"
+	respond_to do |format|
+		format.html # index.html.erb
+		format.js
+	end
   end
   
   def cosmicimport
@@ -31,13 +35,18 @@ class GunplaController < ApplicationController
 		@gunpla.janCode = docJson['janCode']
 		@gunpla.save
 		@status = "Importazione avvenuta con successo"
+		puts '\e[1m\e[31m prova'
+		respond_to do |format|
+		    format.js  
+			format.html 
+		end
   end
   
   def import1999Data
 		@gunpla = Gunpla.find(params[:id])
 		baseUrl = "http://www.1999.co.jp/search_e.asp?Typ1_c=101&scope=0&scope2=0&itkey="
 		
-		if params[:q] != nil then
+		if params[:q] != "" then
 			url = baseUrl + params[:q]
 		else 
 			if @gunpla.janCode == nil then self.importHljData end
