@@ -10,10 +10,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708101307) do
+ActiveRecord::Schema.define(:version => 20110708211040) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "data1999s", :force => true do |t|
+    t.integer  "gunpla_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "datacosmics", :force => true do |t|
+    t.integer  "gunpla_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "datahljs", :force => true do |t|
+    t.integer  "gunpla_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
