@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110708101307) do
 
   create_table "categories", :force => true do |t|
-    t.string   "nome"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20110708101307) do
   create_table "gunpla_categories", :force => true do |t|
     t.integer  "gunpla_id"
     t.integer  "category_id"
+    t.boolean  "primary"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110708101307) do
   create_table "gunpla_series", :force => true do |t|
     t.integer  "gunpla_id"
     t.integer  "serie_id"
+    t.boolean  "primary"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110708101307) do
   end
 
   create_table "series", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

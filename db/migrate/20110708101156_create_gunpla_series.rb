@@ -3,7 +3,7 @@ class CreateGunplaSeries < ActiveRecord::Migration
     create_table :gunpla_series do |t|
       t.integer :gunpla_id
       t.integer :serie_id
-
+      t.boolean :primary
       t.timestamps
     end
   end
