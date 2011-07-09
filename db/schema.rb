@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708211040) do
+ActiveRecord::Schema.define(:version => 20110709180919) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(:version => 20110708211040) do
     t.string   "description"
     t.string   "publicprice"
     t.string   "jancode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "gunpla_id"
+    t.integer  "imagetype_id"
+    t.boolean  "defaultimage"
+    t.string   "localpath"
+    t.string   "remotepath"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -25,7 +25,10 @@ class GunplaController < ApplicationController
   
   def importHljData 
 		@gunpla = Gunpla.find(params[:id])
-		datahlj = Datahlj.new
+		tmp = Datahlj.where("code = ?",@gunpla.code).first 
+        if tmp == nil then datahlj = Datahlj.new 
+          else datahlj = tmp
+        end
 		baseUrl = "http://wholesale.hlj.com/vendors/backend/wholesale_worksheet/scripts/handler/lookup?reqItemCode=CODE&custId=172599"
 		baseUrl["CODE"]= @gunpla.code
 		url = baseUrl
