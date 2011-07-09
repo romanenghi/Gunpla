@@ -26,12 +26,19 @@ ActiveRecord::Schema.define(:version => 20110708211040) do
 
   create_table "datacosmics", :force => true do |t|
     t.integer  "gunpla_id"
+    t.string   "code"
+    t.string   "description"
+    t.string   "jancode"
+    t.string   "wholesaleprice"
+    t.string   "publicprice"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "datahljs", :force => true do |t|
     t.integer  "gunpla_id"
+    t.string   "code"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,16 +60,10 @@ ActiveRecord::Schema.define(:version => 20110708211040) do
   end
 
   create_table "gunplas", :force => true do |t|
-    t.string   "codiceProdotto"
-    t.string   "codiceCosmic"
-    t.string   "codiceHlj"
-    t.string   "codice1999"
-    t.string   "cosmicJanCode"
-    t.string   "descrizione"
-    t.string   "descrizioneHlj"
-    t.string   "descrizione1999"
-    t.string   "descrizioneCosmic"
-    t.string   "janCode"
+    t.string   "code"
+    t.string   "description"
+    t.string   "publicprice"
+    t.string   "jancode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

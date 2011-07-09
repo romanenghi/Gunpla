@@ -22,23 +22,11 @@
 		<tr>
 			<td><%= link_to 'Show', gunpla %></td>
 			<td><%=image_tag 'button-plus-sign.png', :alt => 'expand' %></td>
-			<td><%= gunpla.codiceProdotto %></td>
-			<td><%= gunpla.codiceCosmic %></td>
-			<td><%= gunpla.descrizioneCosmic %></td>
-			<td>
-			<div id="descrizioneHlj<%=gunpla.id%>">
-				<%= gunpla.descrizioneHlj %>
-			</div>
-			</td>
-			<td><%= link_to gunpla.codiceHlj, "http://www.hlj.com/product/#{gunpla.codiceHlj}" %></td>
-			<td>
-				<%= gunpla.codice1999 != nil ? (link_to gunpla.codice1999, "http://www.1999.co.jp/eng/#{gunpla.codice1999}") : "" %>
-			</td>
-			<td>
-				<div id="janCode<%=gunpla.id%>">
-				<%= gunpla.janCode != nil ? gunpla.janCode : (link_to "recupera da Hlj", "/getHljData?&id=#{gunpla.id}", :class=>'hlj', :remote => true) %>
-				</div>
-			</td>
+			<td><%= gunpla.code %></td>
+			<td><%= gunpla.datacosmic.description %></td>
+			<td><%= gunpla.publicprice %></td>
+			<td><%= gunpla.jancode %></td>
+
 		</tr>
 	<% end %>
 	<% else %>

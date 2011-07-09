@@ -10,7 +10,7 @@ class GunplaController < ApplicationController
 	respond_to do |format|
 		format.html # index.html.erb
 		format.js
-	end
+	  end
   end
   
   def cosmicimport
@@ -20,8 +20,8 @@ class GunplaController < ApplicationController
   
   def show
 	@gunpla = Gunpla.find(params[:id])
-	@page_title = @gunpla.codiceProdotto + @gunpla.descrizioneCosmic
-  end
+	@page_title = @gunpla.code
+  end 
   
   def importHljData 
 		@gunpla = Gunpla.find(params[:id])
@@ -89,18 +89,31 @@ class GunplaController < ApplicationController
   end
   
   def cosmicCsvImport
-	CSV.foreach("files/gunpla.csv") do |row|
-    if row[0].to_f.to_s != "0.0" then
-	    gunpla = Gunpla.new
-		gunpla.codiceCosmic = row[0] # Seleziona la colonna n. 0, corrispondente al codice cosmic
-		gunpla.descrizioneCosmic = row[2] # Seleziona la colonna n. 2, corrispondente alla descrizione secondo cosmic
-		gunpla.cosmicJanCode = row[3] # Importa il cosmic Jan Code
-		gunpla.codiceHlj = cosmicToHlj(gunpla.cosmicJanCode)
-		gunpla.codiceProdotto = gunpla.codiceHlj
-		if Gunpla.where("codiceCosmic = #{gunpla.codiceCosmic}").count == 0 then gunpla.save end
-		end 
-	end 
-  end
+	 CSV.foreach("files/gunpla.csv") do |row|
+      if row[0].to_f.to_s != "0.0" then
+        tmp = Datacosmic.where("code = ?",row[0]).first 
+        if tmp == nil then datacosmic = Datacosmic.new 
+          else datacosmic = tmp
+        end
+		    datacosmic.code = row[0].strip # Seleziona la colonna n. 0, corrispondente al codice cosmic
+	   	  datacosmic.description = row[2].strip # Seleziona la colonna n. 2, corrispondente alla descrizione secondo cosmic
+	   	  datacosmic.jancode = row[3].strip # Importa il cosmic Jan Code
+	      datacosmic.wholesaleprice = row[5].strip #Importa il prezzo al pubblico consigliato da cosmic
+	   	  
+	   	  gunplacode = cosmicToHlj(datacosmic.jancode)
+	      if Gunpla.where("code = ?",gunplacode).count == 0  #se non esiste il gunpla corrispondente lo crea
+	          gunpla = Gunpla.new
+	          gunpla.code = gunplacode
+	          gunpla.datacosmic = datacosmic
+	          gunpla.save
+  	    else
+	          gunpla = Gunpla.where("code = ?",gunplacode).first #se esiste il gunpla. ci associa i dati di cosmic 
+		        gunpla.datacosmic = datacosmic
+		        gunpla.save
+		    end 
+	   end 
+   end
+ end
   
   def cosmicToHlj(cosmicCode)
 	suffix = cosmicCode[0,2]
@@ -109,8 +122,7 @@ class GunplaController < ApplicationController
 		when "00" then "BAN" + cosmicCode[2..cosmicCode.length] 
 		else "Invalid"
 	end
-	
 	return result
 end
-
 end
+
