@@ -1,13 +1,2 @@
 <%= @status %>
-<table id="box-table-a">
-	<tr>
-		<td>Codice Prodotto</td>
-		<td>descrizioneHlj</td>
-		<td>janCode</td>
-	</tr>
-	<tr>
-		<td><%= @gunpla.codiceProdotto %></td>
-		<td><%= @gunpla.descrizioneHlj %></td>
-		<td><%= @gunpla.janCode %></td>
-	</tr>
-</table>
+<%= render 'datahlj' %>

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110708211040) do
     t.integer  "gunpla_id"
     t.string   "code"
     t.string   "description"
+    t.string   "jancode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

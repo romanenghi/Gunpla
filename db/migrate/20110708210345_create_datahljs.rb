@@ -4,6 +4,7 @@ class CreateDatahljs < ActiveRecord::Migration
       t.integer :gunpla_id
       t.string :code
       t.string :description
+      t.string :jancode
       t.timestamps
     end
   end

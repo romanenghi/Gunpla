@@ -25,17 +25,18 @@ class GunplaController < ApplicationController
   
   def importHljData 
 		@gunpla = Gunpla.find(params[:id])
+		datahlj = Datahlj.new
 		baseUrl = "http://wholesale.hlj.com/vendors/backend/wholesale_worksheet/scripts/handler/lookup?reqItemCode=CODE&custId=172599"
-		baseUrl["CODE"]= @gunpla.codiceHlj
+		baseUrl["CODE"]= @gunpla.code
 		url = baseUrl
 		doc = open(url).read
 		docJson = JSON.parse(doc)
-		puts docJson.inspect
-		@gunpla.descrizioneHlj = docJson['itemName']
-		@gunpla.janCode = docJson['janCode']
-		@gunpla.save
-		@status = "Importazione avvenuta con successo"
-		puts '\e[1m\e[31m prova'
+		datahlj.code = @gunpla.code
+		datahlj.description = docJson['itemName']
+		datahlj.jancode = docJson['janCode']
+		@gunpla.datahlj = datahlj
+	  @gunpla.save
+	  @status = "Importazione avvenuta con successo"
 		respond_to do |format|
 		    format.js  
 			format.html 
@@ -98,7 +99,7 @@ class GunplaController < ApplicationController
 		    datacosmic.code = row[0].strip # Seleziona la colonna n. 0, corrispondente al codice cosmic
 	   	  datacosmic.description = row[2].strip # Seleziona la colonna n. 2, corrispondente alla descrizione secondo cosmic
 	   	  datacosmic.jancode = row[3].strip # Importa il cosmic Jan Code
-	      datacosmic.wholesaleprice = row[5].strip #Importa il prezzo al pubblico consigliato da cosmic
+	      datacosmic.publicprice = row[5].strip #Importa il prezzo al pubblico consigliato da cosmic
 	   	  
 	   	  gunplacode = cosmicToHlj(datacosmic.jancode)
 	      if Gunpla.where("code = ?",gunplacode).count == 0  #se non esiste il gunpla corrispondente lo crea
