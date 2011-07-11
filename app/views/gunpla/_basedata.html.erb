@@ -1,17 +1,21 @@
-<table id="box-table-a">
-<!-- Table header -->  
-	<thead>
-		<tr>
-			<th scope="col">Codice Prodotto</th>
-			<th scope="col">Description</th>
-		</tr>
-	</thead>
-	<tr>
-		<td><%= @gunpla.code %></td>
-		<td><%= @gunpla.description %></td>
-		<td><%= @gunpla.jancode %></td>
-		<td><%= @gunpla.publicprice %></td>
-		<td><%= @gunpla.id %></td>
-	</tr>
-
-</table>
+<%= form_for(@gunpla) do |gunpla_form|%>
+	<div class="field" >
+		<%= gunpla_form.label :code %><br />
+		<%= gunpla_form.text_field :code%>
+	</div>
+	<div class="field" >
+	<%= gunpla_form.label :description %><br />
+	<%= gunpla_form.text_field :description%>
+	</div>
+	<div class="field" >
+	<%= gunpla_form.label :jancode %><br />
+	<%= gunpla_form.text_field :jancode%>
+	</div>
+	<div class="field" >
+	<%= gunpla_form.label :publicprice %><br />
+	<%= gunpla_form.text_field :publicprice%>
+	</div>
+	<div class="actions" >
+    <%= gunpla_form.submit %>
+    </div>
+<% end%>

@@ -13,6 +13,18 @@ class GunplaController < ApplicationController
 	  end
   end
   
+ def update
+  @gunpla = Gunpla.find(params[:id])
+  respond_to do |format|
+    if @gunpla.update_attributes(params[:gunpla])
+      format.html { redirect_to(@gunpla, :notice => 'Gunpla was successfully updated.') }
+    else
+      format.html { render :action => "edit" }
+
+    end
+  end
+end
+
   def cosmicimport
 	@page_title = "Importazione da cosmic"
 	cosmicCsvImport
