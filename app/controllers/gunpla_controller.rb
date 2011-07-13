@@ -59,7 +59,11 @@ end
       @field_names = db.fields
       @rows = db.data
       puts query
-      db.close
+    db.close
+    respond_to do |format|
+      format.js 
+      format.html 
+    end
   end
   
   def importHljData 
@@ -80,7 +84,7 @@ end
 	  @gunpla.save
 	  @status = "Importazione avvenuta con successo"
 		respond_to do |format|
-		    format.js  
+		  format.js  
 			format.html 
 		end
   end
