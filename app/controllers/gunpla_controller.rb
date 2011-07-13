@@ -1,7 +1,8 @@
 require 'csv'
 require 'open-uri'
 require 'nokogiri'
-
+require 'accessdb'
+require 'win32ole'
 class GunplaController < ApplicationController
 
   def index
@@ -34,6 +35,32 @@ end
 	@gunpla = Gunpla.find(params[:id])
 	@page_title = @gunpla.code
   end 
+  
+  def ready
+    @page_title = "Ready pro"
+    if params[:string] != nil then
+      db = AccessDb.new('C:\script\ready\Ready_backup.RDB')
+      db.open
+      query = "SELECT * FROM Articoli WHERE Descrizione LIKE '#{params[:string]}%'"
+      db.query(query)
+      @field_names = db.fields
+      @rows = db.data
+      puts query
+      db.close
+    end
+  end
+
+  def importReady
+    @gunpla = Gunpla.find(params[:id])
+    db = AccessDb.new('C:\script\ready\Ready_backup.RDB')
+      db.open
+      query = "SELECT * FROM Articoli WHERE 'Codice Articolo' = '#{@gunpla.code}%'"
+      db.query(query)
+      @field_names = db.fields
+      @rows = db.data
+      puts query
+      db.close
+  end
   
   def importHljData 
 		@gunpla = Gunpla.find(params[:id])

@@ -1,0 +1,10 @@
+<%= form_tag('/ready', :method => "get") do %>
+  <%= label_tag(:string, "Search for:") %>
+  <%= text_field_tag(:string) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<% unless @rows.nil? %>
+	    <% @rows.each do |row| %>
+		<%=  "#{row[2]}   #{row[8]}" %></br>
+		<% end %>
+<% end %>

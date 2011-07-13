@@ -4,6 +4,7 @@ Gundam::Application.routes.draw do
   match '/index', :to => 'gunpla#index'
   match '/getHljData', :to => 'gunpla#importHljData'
   match '/get1999Data', :to => 'gunpla#import1999Data'
+  match '/ready', :to => 'gunpla#ready'
   root :to => 'gunpla#index'
   
 end
