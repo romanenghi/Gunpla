@@ -53,13 +53,14 @@ end
   def importReady
     @gunpla = Gunpla.find(params[:id])
     db = AccessDb.new('C:\script\ready\Ready_backup.RDB')
-      db.open
-      query = "SELECT * FROM Articoli WHERE 'Codice Articolo' = '#{@gunpla.code}%'"
-      db.query(query)
-      @field_names = db.fields
-      @rows = db.data
-      puts query
-    db.close
+     db.open
+     query = "SELECT * FROM Articoli WHERE [Codice Articolo] = '#{@gunpla.code}'"
+     db.query(query)
+     @fields = db.fields
+     @rows = db.data
+     puts query
+     puts @rows
+  #  db.close
     respond_to do |format|
       format.js 
       format.html 

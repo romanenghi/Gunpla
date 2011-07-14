@@ -1,1 +1,6 @@
-ciao
+<% unless @rows.nil? %>
+	    <% @rows.each do |row| %>
+		<%=  "#{@fields[2]} : #{row[2]}  #{@fields[8]}: #{row[8]}" %></br>
+		<%=  "#{@fields[18]} : #{row[18]}"%></br>
+		<% end %>
+<% end %>

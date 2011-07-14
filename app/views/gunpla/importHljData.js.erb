@@ -1,8 +1,8 @@
 
   $(".hlj")
     .bind("ajaxSuccess" , function(){
-        $("#dataready").html('<%=escape_javascript(render 'dataready')%>');
+        $("#datahlj").html('<%=escape_javascript(render 'datahlj')%>');
     })
     .bind("ajaxSend", function(){
-        $("#dataready").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
+        $("#datahlj").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
     });
