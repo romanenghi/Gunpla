@@ -6,6 +6,7 @@ Gundam::Application.routes.draw do
   match '/get1999Data', :to => 'gunpla#import1999Data'
   match '/getReadyData', :to => 'gunpla#importReady'
   match '/ready', :to => 'gunpla#ready'
+  match '/crop', :to => 'imagetool#crop'
   root :to => 'gunpla#index'
   
 end

@@ -1,0 +1,19 @@
+<%= form_tag('/crop', :method => "get") do %>
+  <%= label_tag(:string, "Immagine da editare:") %>
+  <%= text_field_tag(:uri) %>
+  <%= submit_tag("Carica") %>
+<% end %>
+
+<% if @img  != nil then %>
+<%= image_tag('tmp/tmp.jpg', :id => 'cropbox')%>
+<%= form_tag('/crop', :method => "get") do %>
+	 <%= label_tag(:logo, "logo") %>
+	 <%= check_box_tag(:logo) %>
+ 	 <%= hidden_field_tag(:x, " ") %>
+ 	 <%= hidden_field_tag(:y, " ") %>
+ 	 <%= hidden_field_tag(:w, " ") %>
+ 	 <%= hidden_field_tag(:h, " ") %>
+ 	 <%= submit_tag("Crop") %>
+	 <% end %>
+<%= image_tag('tmp/tmpcrop.jpg')%>
+<% end %>
