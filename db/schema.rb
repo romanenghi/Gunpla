@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20110709180919) do
     t.string   "description"
     t.string   "publicprice"
     t.string   "jancode"
+    t.boolean  "export"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

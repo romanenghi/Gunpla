@@ -3,7 +3,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'accessdb'
 require 'win32ole'
-class GunplaController < ApplicationController
+class GunplasController < ApplicationController
 
   def index
 	@gunplas = Gunpla.all
@@ -14,6 +14,39 @@ class GunplaController < ApplicationController
 	  end
   end
   
+  def export
+  @gunpla = Gunpla.find(params[:id])
+  @gunpla.export = !@gunpla.export
+  @gunpla.save
+  respond_to do |format|
+    format.html # export.html.erb
+    format.js
+    end
+  end
+
+ def new
+    @gunpla = Gunpla.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @gunpla }
+    end
+  end
+  
+ def create
+    @gunpla = Gunpla.new(params[:gunpla])
+
+    respond_to do |format|
+      if @gunpla.save
+        format.html { redirect_to @gunpla, notice: 'Anime was successfully created.' }
+        format.json { render json: @gunpla, status: :created, location: @gunpla }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @gunpla.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+ 
  def update
   @gunpla = Gunpla.find(params[:id])
   respond_to do |format|

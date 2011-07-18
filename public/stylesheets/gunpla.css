@@ -1,3 +1,5 @@
+
+
 #side {
 	float: left;
 	width: 8em;
@@ -52,6 +54,7 @@
 #side ul li a:visited {
   color: #09c;
 }
+
 
 nav ul li a:hover {
   text-decoration: underline;
@@ -118,6 +121,10 @@ nav ul li a:hover {
 	border-right: 1px solid #aabcfe;
 	border-left: 1px solid #aabcfe;
 	color: #669;
+}
+
+tr.selected {
+	color: red;
 }
 
 

@@ -5,6 +5,7 @@ class CreateGunplas < ActiveRecord::Migration
 	  t.string :description
 	  t.string :publicprice
 	  t.string :jancode
+	  t.boolean :export
       t.timestamps
     end
   end

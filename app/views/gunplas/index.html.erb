@@ -1,17 +1,17 @@
 <h1>Gunpla - Elenco prodotti</h1>
+
+<%= link_to 'New Gunpla', new_gunpla_path %>
 <table id="box-table-a">
 	<!-- Table header -->  
 	<thead>
 		<tr>
 			<th scope="col"></th>
+
+			<th scope="col"></th>
 			<th scope="col">Codice</th>
-			<th scope="col">Cosmic</th>
-			<th scope="col">Descrizione Cosmic</th>
-			<th scope="col">Descrizione Hlj</th>
-			<th scope="col">1999</th>
 			<th scope="col">Descrizione</th>
-			<th scope="col">Descrizione Hlj</th>
-			<th scope="col">Descrizione 1999</th>
+			<th scope="col">Prezzo al pubblico</th>
+			<th scope="col">Jan Code</th>
 		</tr>
 	</thead>
 	
@@ -19,13 +19,15 @@
 	<tbody>
 	<% if @gunplas.length > 0 %>
 	<% @gunplas.each do |gunpla| %>
-		<tr>
+		<tr class='<%= if gunpla.export == true then "selected" 
+		else "unselected" end %>'>
 			<td><%= link_to 'Show', gunpla %></td>
-			<td><%=image_tag 'button-plus-sign.png', :alt => 'expand' %></td>
+			<td><%= link_to 'Destroy', gunpla, confirm: 'Are you sure?', method: :delete %></td>
 			<td><%= gunpla.code %></td>
-			<td><%= gunpla.datacosmic.description %></td>
+			<td><%= gunpla.description %></td>
 			<td><%= gunpla.publicprice %></td>
 			<td><%= gunpla.jancode %></td>
+			<td><%= link_to 'export', export_path(:id => gunpla.id), :remote => true, :id => "export#{gunpla.id}"%></td>
 
 		</tr>
 	<% end %>
@@ -36,3 +38,4 @@
 	<% end %>
 	</tbody>
 </table>
+

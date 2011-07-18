@@ -1,8 +1,3 @@
-<div id="baseData">
-<p class="notice"><%= notice %></p>
-Caratteristiche anagrafica interna (Starshop Brescia)
-<%= render "basedata"%>
-</div>
 Cosmic Data
 <table id="box-table-a">
 <!-- Table header -->  
@@ -24,16 +19,3 @@ Cosmic Data
 	</tr>
 
 </table>
-
-Hlj Data
-<%= link_to "recupera da Hlj", "/getHljData?&id=#{@gunpla.id}", :class=>'hlj', :remote => true%>
-<div id="datahlj">
-<%= if @gunpla.datahlj != nil then render "datahlj" end %>
-</div>	
-
-Ready Data
-<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
-<div id="dataready">
-<%= render "dataready" %>
-</div>
-

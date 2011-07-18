@@ -1,13 +1,14 @@
 Gundam::Application.routes.draw do
-  resources :gunpla
-  match '/cosmicimport', :to => 'gunpla#cosmicimport'
-  match '/index', :to => 'gunpla#index'
-  match '/getHljData', :to => 'gunpla#importHljData'
-  match '/get1999Data', :to => 'gunpla#import1999Data'
-  match '/getReadyData', :to => 'gunpla#importReady'
-  match '/ready', :to => 'gunpla#ready'
+  resources :gunplas
+  match '/cosmicimport', :to => 'gunplas#cosmicimport'
+  match '/export', :to => 'gunplas#export'
+  match '/getHljData', :to => 'gunplas#importHljData'
+  match '/get1999Data', :to => 'gunplas#import1999Data'
+  match '/getReadyData', :to => 'gunplas#importReady'
+  match '/ready', :to => 'gunplas#ready'
   match '/crop', :to => 'imagetool#crop'
-  root :to => 'gunpla#index'
+  match '/exportCVS', :to => 'gunplas#exportCVS'
+  root :to => 'gunplas#index'
   
 end
  
