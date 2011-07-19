@@ -1,5 +1,18 @@
-<h1>New Gunpla</h1>
+<h1>Creazione nuovo Prodotto</h1>
 
 <%= render 'basedata' %>
+
+Importa dati da un prodotto esistete:
+- ready pro
+- cosmic CVS
+- HLJ Website
+<%= form_tag %>
+<% end %>
+<%= link_to "recupera da Hlj", "/getHljData?&id=#{@gunpla.id}", :class=>'hlj', :remote => true%>
+<div id="datahlj">
+<%= if @gunpla.datahlj != nil then render "datahlj" end %>
+</div>	
+- 1999 Website
+- Sideshow Website
 
 <%= link_to 'Back', gunplas_path %>

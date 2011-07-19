@@ -93,7 +93,7 @@ end
      @rows = db.data
      puts query
      puts @rows
-  #  db.close
+     db.close
     respond_to do |format|
       format.js 
       format.html 
