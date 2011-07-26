@@ -1,21 +1,4 @@
-<%= form_for(@gunpla) do |gunpla_form|%>
-	<div class="field" >
-		<%= gunpla_form.label :code %><br />
-		<%= gunpla_form.text_field :code%>
-	</div>
-	<div class="field" >
-	<%= gunpla_form.label :description %><br />
-	<%= gunpla_form.text_field :description%>
-	</div>
-	<div class="field" >
-	<%= gunpla_form.label :jancode %><br />
-	<%= gunpla_form.text_field :jancode%>
-	</div>
-	<div class="field" >
-	<%= gunpla_form.label :publicprice %><br />
-	<%= gunpla_form.text_field :publicprice%>
-	</div>
-	<div class="actions" >
-    <%= gunpla_form.submit %>
-    </div>
-<% end%>
+<%= semantic_form_for @gunpla do |form| %>
+    <%= form.inputs %>
+    <%= form.buttons %>
+<% end %>

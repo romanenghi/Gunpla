@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(:version => 20110709180919) do
     t.string   "code"
     t.string   "description"
     t.string   "jancode"
+    t.string   "image"
+    t.text     "longdescription"
+    t.string   "productseriestitle"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

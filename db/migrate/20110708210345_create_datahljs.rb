@@ -5,6 +5,9 @@ class CreateDatahljs < ActiveRecord::Migration
       t.string :code
       t.string :description
       t.string :jancode
+      t.string :image
+      t.text :longdescription
+      t.string :productseriestitle
       t.timestamps
     end
   end

@@ -66,6 +66,7 @@ end
   
   def show
 	@gunpla = Gunpla.find(params[:id])
+	@datacosmic = @gunpla.datacosmic
 	@page_title = @gunpla.code
   end 
   
@@ -101,22 +102,31 @@ end
   end
   
   def importHljData 
-		@gunpla = Gunpla.find(params[:id])
-		tmp = Datahlj.where("code = ?",@gunpla.code).first 
-        if tmp == nil then datahlj = Datahlj.new 
-          else datahlj = tmp
-        end
+    @gunpla = Gunpla.find(params[:gunplaid])
 		baseUrl = "http://wholesale.hlj.com/vendors/backend/wholesale_worksheet/scripts/handler/lookup?reqItemCode=CODE&custId=172599"
-		baseUrl["CODE"]= @gunpla.code
+		baseUrl["CODE"]= params[:code]
 		url = baseUrl
 		doc = open(url).read
 		docJson = JSON.parse(doc)
-		datahlj.code = @gunpla.code
-		datahlj.description = docJson['itemName']
-		datahlj.jancode = docJson['janCode']
-		@gunpla.datahlj = datahlj
-	  @gunpla.save
-	  @status = "Importazione avvenuta con successo"
+		
+		if docJson['status'] == "OK" then
+		  @datahlj = Datahlj.new 
+		  puts docJson.inspect
+		  @datahlj.code = docJson['itemCode']
+	   	@datahlj.description = docJson['itemName']
+	   	@datahlj.jancode = docJson['janCode']
+	   	@datahlj.image = "http://static.hlj.com/images/ban/#{@datahlj.code.downcase}box.jpg"
+	   	doc = Nokogiri.HTML(open("http://www.hlj.com/product/#{@datahlj.code}"))
+	   	@datahlj.longdescription = doc.xpath('//div[@class="productdescr"]').first.content
+	   	@datahlj.productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first.content
+	   	puts ("********************** #{@datahlj.productseriestitle}")
+      @gunpla.datahlj = @datahlj
+	    @gunpla.save
+	    @status = "Importazione avvenuta con successo"
+	  else
+	    @status = "Impossibile trovare questo prodotto su HLJ"
+	  end
+	  
 		respond_to do |format|
 		  format.js  
 			format.html 

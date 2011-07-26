@@ -9,7 +9,14 @@ Caratteristiche anagrafica interna (Starshop Brescia)
 </div>
 
 Hlj Data
-<%= link_to "recupera da Hlj", "/getHljData?&id=#{@gunpla.id}", :class=>'hlj', :remote => true%>
+
+<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
+	  <%= label_tag(:code, "Codice HLJ:") %>
+ 	  <%= text_field_tag(:code, @gunpla.code) %>
+ 	  <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
+      <%= submit_tag("Search", :class => 'hlj') %>
+<% end %>
+
 <div id="datahlj">
 <%= if @gunpla.datahlj != nil then render "datahlj" end %>
 </div>	

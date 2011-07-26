@@ -3,12 +3,18 @@
 		<tr>
 			<th scope="col">Codice Prodotto</th>
 			<th scope="col">Description</th>
+			<th scope="col">Serie</th>
 			<th scope="col">JanCode</th>
+			<th scope="col">Long Description</th>
+			<th scope="col">Image</th>
 		</tr>
 	</thead>
 	<tr>
-		<td class='draggable'><%= @gunpla.datahlj.code %></td>
+		<td class='draggable'><%= link_to(@gunpla.datahlj.code,"http://www.hlj.com/product/#{@gunpla.datahlj.code}")%></td>
 		<td><%= @gunpla.datahlj.description %></td>
+		<td><%= @gunpla.datahlj.productseriestitle %></td>
 		<td><%= @gunpla.datahlj.jancode %></td>
+		<td><%= @gunpla.datahlj.longdescription %></td>
+		<td><%= image_tag(@gunpla.datahlj.image) %></td>
 	</tr>
 </table>

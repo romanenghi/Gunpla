@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'nokogiri'
 gem 'jquery-rails', '>= 1.0.3'
 gem 'rmagick'
+gem 'formtastic', '~> 1.2.3'
 # Use unicorn as the web server
 # gem 'unicorn'
 
