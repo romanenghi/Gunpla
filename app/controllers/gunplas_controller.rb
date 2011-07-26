@@ -115,7 +115,7 @@ end
 		  @datahlj.code = docJson['itemCode']
 	   	@datahlj.description = docJson['itemName']
 	   	@datahlj.jancode = docJson['janCode']
-	   	@datahlj.image = "http://static.hlj.com/images/ban/#{@datahlj.code.downcase}box.jpg"
+	   	@datahlj.image = "http://static.hlj.com/images/#{@datahlj.code.downcase[/\D*/]}/#{@datahlj.code.downcase}box.jpg"
 	   	doc = Nokogiri.HTML(open("http://www.hlj.com/product/#{@datahlj.code}"))
 	   	@datahlj.longdescription = doc.xpath('//div[@class="productdescr"]').first.content
 	   	@datahlj.productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first.content
