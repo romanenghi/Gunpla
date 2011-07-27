@@ -115,18 +115,18 @@ end
 		  @datahlj.code = docJson['itemCode']
 	   	@datahlj.description = docJson['itemName']
 	   	@datahlj.jancode = docJson['janCode']
-	   	@datahlj.image = "http://static.hlj.com/images/#{@datahlj.code.downcase[/\D*/]}/#{@datahlj.code.downcase}box.jpg"
-	   	doc = Nokogiri.HTML(open("http://www.hlj.com/product/#{@datahlj.code}"))
+	    
+	    doc = Nokogiri.HTML(open("http://www.hlj.com/product/#{@datahlj.code}"))
 	   	
+	   	image = doc.xpath('//div[@id="inner-content"]/table/tr/td/img').first['style'][/'.*'/]
+	    (image == nil) ? (@datahlj.image = "non disponibile") : (@datahlj.image = image[1..-2])
+      
 	   	longdescription = doc.xpath('//div[@class="productdescr"]').first
-	   
 	   	(longdescription == nil) ? (@datahlj.longdescription = "non disponibile") : (@datahlj.longdescription = longdescription.content)
       
       productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first
       (productseriestitle == nil) ? (@datahlj.productseriestitle = "non disponibile") : (@datahlj.productseriestitle = productseriestitle.content)
 
-	   
-	   	puts ("********************** #{@datahlj.productseriestitle}")
       @gunpla.datahlj = @datahlj
 	    @gunpla.save
 	    @status = "Importazione avvenuta con successo"

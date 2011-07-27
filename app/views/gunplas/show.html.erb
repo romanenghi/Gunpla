@@ -1,34 +1,38 @@
-<div id="baseData">
-<p class="notice"><%= notice %></p>
-<%= render "basedata"%>
-<%= form_tag("/getnewimage", :method => "get") do %>
-	  <%= label_tag(:url, "Url:") %>
- 	  <%= text_field_tag(:url) %>
- 	  <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
-      <%= submit_tag("Search", :class => 'getimage') %>
-<% end %>
-</div>
+<div id="accordion">
 
-<div id="datacosmic">
-<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
-</div>
+	<h3>Anagrafica di base</h3>
+	<div id="baseData">
+		<p class="notice"><%= notice %></p>
+		<%= render "basedata"%>
+		<%= form_tag("/getnewimage", :method => "get") do %>
+	 		 <%= label_tag(:url, "Url:") %>
+ 	  		 <%= text_field_tag(:url) %>
+ 	         <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
+             <%= submit_tag("Search", :class => 'getimage') %>
+        <% end %>
+     </div>
 
-Hlj Data
+	<h3>Cosmic data</h3>
+	<div id="datacosmic">
+		<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
+	</div>
 
-<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
-	  <%= label_tag(:code, "Codice HLJ:") %>
- 	  <%= text_field_tag(:code, @gunpla.code) %>
- 	  <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
-      <%= submit_tag("Search", :class => 'hlj') %>
-<% end %>
+	<h3>Hlj Data</h3>
+	<div id="datahlj">
+		<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
+			  <%= label_tag(:code, "Codice HLJ:") %>
+ 	 		  <%= text_field_tag(:code, @gunpla.code) %>
+ 			  <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
+    		  <%= submit_tag("Search", :class => 'hlj') %>
+		<% end %>
+		<%= if @gunpla.datahlj != nil then render "datahlj" end %>
+	</div>	
 
-<div id="datahlj">
-<%= if @gunpla.datahlj != nil then render "datahlj" end %>
-</div>	
-
-Ready Data
-<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
-<div id="dataready">
-<%= render "dataready" %>
+	<h3>Ready Data</h3>
+	<div id="dataready">
+		<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
+		<%= render "dataready" %>
+	</div>
+	
 </div>
 
