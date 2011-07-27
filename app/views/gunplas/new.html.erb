@@ -2,15 +2,4 @@
 
 <%= render 'basedata' %>
 
-Importa dati da un prodotto esistete:
-- ready pro
-- cosmic CVS
-- HLJ Website
-<%= link_to "recupera da Hlj", "/getHljData?&code=#{"ban1100"}", :class=>'hlj', :remote => true%>
-<div id="datahlj">
-<%= if @gunpla.datahlj != nil then render "datahlj" end %>
-</div>	
-- 1999 Website
-- Sideshow Website
-
 <%= link_to 'Back', gunplas_path %>

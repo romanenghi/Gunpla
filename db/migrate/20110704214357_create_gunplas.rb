@@ -3,6 +3,7 @@ class CreateGunplas < ActiveRecord::Migration
     create_table :gunplas do |t|
 	  t.string :code
 	  t.string :description
+	  t.text :longdescription
 	  t.string :publicprice
 	  t.string :jancode
 	  t.boolean :export

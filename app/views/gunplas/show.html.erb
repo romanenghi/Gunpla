@@ -1,7 +1,12 @@
 <div id="baseData">
 <p class="notice"><%= notice %></p>
-Caratteristiche anagrafica interna (Starshop Brescia)
 <%= render "basedata"%>
+<%= form_tag("/getnewimage", :method => "get") do %>
+	  <%= label_tag(:url, "Url:") %>
+ 	  <%= text_field_tag(:url) %>
+ 	  <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
+      <%= submit_tag("Search", :class => 'getimage') %>
+<% end %>
 </div>
 
 <div id="datacosmic">

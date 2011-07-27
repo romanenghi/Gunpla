@@ -117,8 +117,15 @@ end
 	   	@datahlj.jancode = docJson['janCode']
 	   	@datahlj.image = "http://static.hlj.com/images/#{@datahlj.code.downcase[/\D*/]}/#{@datahlj.code.downcase}box.jpg"
 	   	doc = Nokogiri.HTML(open("http://www.hlj.com/product/#{@datahlj.code}"))
-	   	@datahlj.longdescription = doc.xpath('//div[@class="productdescr"]').first.content
-	   	@datahlj.productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first.content
+	   	
+	   	longdescription = doc.xpath('//div[@class="productdescr"]').first
+	   
+	   	(longdescription == nil) ? (@datahlj.longdescription = "non disponibile") : (@datahlj.longdescription = longdescription.content)
+      
+      productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first
+      (productseriestitle == nil) ? (@datahlj.productseriestitle = "non disponibile") : (@datahlj.productseriestitle = productseriestitle.content)
+
+	   
 	   	puts ("********************** #{@datahlj.productseriestitle}")
       @gunpla.datahlj = @datahlj
 	    @gunpla.save
@@ -215,5 +222,20 @@ end
 	end
 	return result
 end
+
+  def getnewimage
+    @gunpla = Gunpla.find(params[:gunplaid])
+    @image = Image.new
+    @image.gunpla_id = params[:gunplaid]
+    @image.remotepath = (params[:url])
+    @image.localpath = "#{@gunpla.code}_#{@gunpla.images.length+1}.jpg"
+    @img=Imagetool.new
+    @img.getimage(params[:url])
+    @img.save("public/images/#{@gunpla.code}_#{@gunpla.images.length+1}.jpg")
+    
+    @image.save
+
+  end
+  
 end
 

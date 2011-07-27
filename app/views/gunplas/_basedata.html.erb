@@ -1,4 +1,21 @@
+<h3>Anagrafica di base</h3>
 <%= semantic_form_for @gunpla do |form| %>
     <%= form.inputs %>
     <%= form.buttons %>
 <% end %>
+<div id='images'>
+	<h3>Immagini associate</h3>
+	<table id="box-table-a">
+	<thead>
+		<tr>
+			<th scope="col">Foto</th>
+		</tr>
+	</thead>
+	<% @gunpla.images.each do |image|%>
+		<tr>
+			<td><%= image_tag(image.localpath) %></td>
+		</tr>
+	<% end %>
+	</table>
+</div>
+	
