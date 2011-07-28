@@ -6,7 +6,7 @@ require 'win32ole'
 class GunplasController < ApplicationController
 
   def index
-	@gunplas = Gunpla.all
+	@gunplas = Gunpla.find(:all, :include => :images)
 	@page_title = "Elenco Gundam"
 	respond_to do |format|
 		format.html # index.html.erb
