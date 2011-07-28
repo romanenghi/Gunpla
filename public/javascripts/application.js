@@ -1,11 +1,9 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-jQuery(document).ready(function(){
-	$('div#accordion :header').click(function() {
-		$(this).next().toggle();
-		return false;
-	})
-});
+jQuery(document).ready(function() {
+		$("div#tabs").tabs();
+	});
+
 
 jQuery(function() {
         jQuery('#cropbox').Jcrop({

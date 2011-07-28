@@ -1,8 +1,8 @@
 
   $(".hlj")
     .bind("ajaxSuccess" , function(){
-        $("#datahlj").html('<%= @status %><%=escape_javascript(render 'datahlj')%>');
+        $("#tabs-2").html('<%= @status %><%=escape_javascript(render 'datahlj')%>');
     })
     .bind("ajaxSend", function(){
-        $("#datahlj").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
+        $("#tabs-2").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
     });

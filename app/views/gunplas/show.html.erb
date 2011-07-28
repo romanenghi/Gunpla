@@ -1,6 +1,4 @@
-<div id="accordion">
-
-	<h3>Anagrafica di base</h3>
+<h3>Anagrafica di base</h3>
 	<div id="baseData">
 		<p class="notice"><%= notice %></p>
 		<%= render "basedata"%>
@@ -11,14 +9,20 @@
              <%= submit_tag("Search", :class => 'getimage') %>
         <% end %>
      </div>
+     
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Cosmic Data</a></li>
+		<li><a href="#tabs-2">HljData</a></li>
+		<li><a href="#tabs-3">ReadyData</a></li>
+	</ul>
+	
 
-	<h3>Cosmic data</h3>
-	<div id="datacosmic">
+	<div id="tabs-1">
 		<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
 	</div>
 
-	<h3>Hlj Data</h3>
-	<div id="datahlj">
+	<div id="tabs-2">
 		<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
 			  <%= label_tag(:code, "Codice HLJ:") %>
  	 		  <%= text_field_tag(:code, @gunpla.code) %>
@@ -28,8 +32,7 @@
 		<%= if @gunpla.datahlj != nil then render "datahlj" end %>
 	</div>	
 
-	<h3>Ready Data</h3>
-	<div id="dataready">
+	<div id="tabs-3">
 		<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
 		<%= render "dataready" %>
 	</div>
