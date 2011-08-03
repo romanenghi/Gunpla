@@ -15,13 +15,35 @@ class GunplasController < ApplicationController
   end
   
   def export
-  @gunpla = Gunpla.find(params[:id])
-  @gunpla.export = !@gunpla.export
-  @gunpla.save
+  @gunplas = Gunpla.where("export = ?", true)
   respond_to do |format|
     format.html # export.html.erb
     format.js
     end
+  end
+
+  def exportCVS
+    @page_title = "Esportazione"
+    @gunplas = Gunpla.where("export = ?", true)
+    
+    CSV.open("file.csv", "wb") do |csv|
+      @gunplas.each do |gunpla|
+        base = 'C:/script/gunpla/Gunpla/public/images/'
+        csv << [gunpla.code, 
+                gunpla.description, 
+                gunpla.longdescription, 
+                gunpla.publicprice, 
+                gunpla.jancode, 
+                base + gunpla.images.first.localpath,
+                base + gunpla.images.first.localpath
+                ]
+        end
+    end
+
+    respond_to do |format|
+      format.html # export.html.erb
+      format.js
+      end
   end
 
  def new
@@ -38,7 +60,7 @@ class GunplasController < ApplicationController
 
     respond_to do |format|
       if @gunpla.save
-        format.html { redirect_to @gunpla, notice: 'Anime was successfully created.' }
+        format.html { redirect_to @gunpla, notice: 'Gunpla was successfully created.' }
         format.json { render json: @gunpla, status: :created, location: @gunpla }
       else
         format.html { render action: "new" }
@@ -53,7 +75,7 @@ class GunplasController < ApplicationController
     if @gunpla.update_attributes(params[:gunpla])
       format.html { redirect_to(@gunpla, :notice => 'Gunpla was successfully updated.') }
     else
-      format.html { render :action => "edit" }
+      format.html { redirect_to(@gunpla, :notice => 'Impossibile aggiornare.') }
 
     end
   end

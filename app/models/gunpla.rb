@@ -7,4 +7,7 @@ class Gunpla < ActiveRecord::Base
   has_one :data1999
   has_one :datahlj
   has_one :datacosmic
+  
+  validates_presence_of :code
+  validates_uniqueness_of :code
 end

@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110709180919) do
   create_table "gunplas", :force => true do |t|
     t.string   "code"
     t.string   "description"
+    t.text     "longdescription"
     t.string   "publicprice"
     t.string   "jancode"
     t.boolean  "export"
