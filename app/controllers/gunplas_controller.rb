@@ -34,6 +34,7 @@ class GunplasController < ApplicationController
                 gunpla.longdescription, 
                 gunpla.publicprice, 
                 gunpla.jancode, 
+                gunpla.categories.first.codiceready,
                 base + gunpla.images.first.localpath,
                 base + gunpla.images.first.localpath
                 ]
@@ -258,6 +259,25 @@ end
     @image.save
 
   end
+  
+  def categories
+    @page_title = "Gestione categorie"
+    @categories = Category.find(:all)
+    
+    if params[:commit] == "Importa" then
+      @readycategories = Accessready.new.getcategories
+      @readycategories.each do |readycategory|
+        category = Category.where("codiceready = ?", readycategory[4]).first
+        if category == nil then category = Category.new end
+        category.name = readycategory[2]
+        category.codiceready = readycategory[4]
+        category.save
+        end
+    end
+  
+  end
+    
+ 
   
 end
 

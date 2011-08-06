@@ -9,6 +9,7 @@ Gundam::Application.routes.draw do
   match '/crop', :to => 'imagetool#crop'
   match '/exportCVS', :to => 'gunplas#exportCVS'
   match '/getnewimage', :to => 'gunplas#getnewimage'
+  match '/categories', :to => 'gunplas#categories'
   root :to => 'gunplas#index'
   
 end

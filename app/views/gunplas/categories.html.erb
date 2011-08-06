@@ -1,0 +1,20 @@
+<%= form_tag(categories_path, :method => "get") do %>
+  <%= label_tag(:string, "Importa da ready pro (attenzione - tutte le categorie correnti verranno cancellate)") %>
+  <%= submit_tag("Importa") %>
+<% end %>
+
+<table id="box-table-a">
+	<thead>
+		<tr>
+			<th scope="col">Nome categoria</th>
+			<th scope="col">Codice alternativo ready</th>
+		</tr>
+	</thead>
+	<% @categories.each do |category| %>
+	<tr>
+		<td><%= category.name %></td>
+		<td><%= category.codiceready %></td>
+	</tr>
+	<% end %>
+</table>
+

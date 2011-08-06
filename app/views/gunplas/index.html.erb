@@ -27,6 +27,7 @@
 			<td><%= gunpla.description %></td>
 			<td><%= gunpla.publicprice %></td>
 			<td><%= gunpla.jancode %></td>
+			<td><%= (gunpla.categories.first == nil) ? () : gunpla.categories.first.name %></td>
 			<td><%= (gunpla.export == true) ? ("Selezionato per export") : () %></td>
 	
 		</tr>

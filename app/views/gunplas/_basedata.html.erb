@@ -1,6 +1,7 @@
 
 <%= semantic_form_for @gunpla do |form| %>
     <%= form.inputs %>
+    <%= form.input :categories,  :as => :select,      :collection => Category.find(:all) %>
     <%= form.buttons %>
 <% end %>
 <div id='images'>
