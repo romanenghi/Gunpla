@@ -1,4 +1,4 @@
-<%= form_tag(categories_path, :method => "get") do %>
+<%= form_tag(categories_path, :method => "post") do %>
   <%= label_tag(:string, "Importa da ready pro (attenzione - tutte le categorie correnti verranno cancellate)") %>
   <%= submit_tag("Importa") %>
 <% end %>
