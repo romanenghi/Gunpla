@@ -12,19 +12,15 @@ The following style may be *conditionally* included for improved support on olde
 form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
-#customer-details input {
-    float: left;
-    clear: left;
-    font-size: 13px;
-    margin: 2px 0 5px;
-    padding: 2px;
-    width: 285px;
-}
+form.formtastic {
+    background: #FFFFFF;
+    padding: 10px;
+    width: 500px;
+    border: 1px solid #000000;
+    font: 12px Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    float:left;
+    }
 
-#gunpla-details .string input {
-      width: 285px;
-      margin: 2px 0 5px;
-      padding: 2px;
-      font-size: 13px;
-  }
-  
+
+    

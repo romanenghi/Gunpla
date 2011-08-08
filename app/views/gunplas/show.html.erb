@@ -1,22 +1,23 @@
 <h3>Anagrafica di base</h3>
-	<div id="baseData">
-		<p class="notice"><%= notice %></p>
-		<%= render "basedata"%>
-		<%= form_tag("/getnewimage", :method => "get") do %>
-	 		 <%= label_tag(:url, "Url:") %>
- 	  		 <%= text_field_tag(:url) %>
- 	         <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
-             <%= submit_tag("Search", :class => 'getimage') %>
-        <% end %>
-     </div>
-     
+<div id="baseData">
+	<p class="notice">
+		<%= notice %>
+	</p>
+	<%= render "basedata"%>
+</div>
+
 <div id="tabs">
 	<ul>
-		<li><a href="#tabs-1">Cosmic Data</a></li>
-		<li><a href="#tabs-2">HljData</a></li>
-		<li><a href="#tabs-3">ReadyData</a></li>
+		<li>
+			<a href="#tabs-1">Cosmic Data</a>
+		</li>
+		<li>
+			<a href="#tabs-2">HljData</a>
+		</li>
+		<li>
+			<a href="#tabs-3">ReadyData</a>
+		</li>
 	</ul>
-	
 
 	<div id="tabs-1">
 		<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
@@ -24,18 +25,18 @@
 
 	<div id="tabs-2">
 		<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
-			  <%= label_tag(:code, "Codice HLJ:") %>
- 	 		  <%= text_field_tag(:code, @gunpla.code) %>
- 			  <%= hidden_field_tag(:gunplaid, @gunpla.id) %>
-    		  <%= submit_tag("Search", :class => 'hlj') %>
+		<%= label_tag(:code, "Codice HLJ:") %>
+		<%= text_field_tag(:code, @gunpla.code) %>
+		<%= hidden_field_tag(:gunplaid, @gunpla.id) %>
+		<%= submit_tag("Search", :class => 'hlj') %>
 		<% end %>
 		<%= if @gunpla.datahlj != nil then render "datahlj" end %>
-	</div>	
+	</div>
 
 	<div id="tabs-3">
 		<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
 		<%= render "dataready" %>
 	</div>
-	
+
 </div>
 
