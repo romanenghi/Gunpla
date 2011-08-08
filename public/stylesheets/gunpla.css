@@ -26,6 +26,19 @@
 	color: #000000;
 	float:left;
 }
+
+.thumb {
+	
+	height:100px;
+
+}
+
+.imagebox {
+	background: #FFFFFF;
+	padding: 10px;
+	float :left;
+}
+
 #tabs {
 	clear :both;
 }

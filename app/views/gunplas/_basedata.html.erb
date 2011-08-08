@@ -30,9 +30,6 @@
 <% end %>
 <div id='images'>
 	<h3>Immagini associate</h3>
-	<p class="imgnotice">
-		<%= notice %>
-	</p>
 	<div id="addimages">
 		<%= form_tag("/getnewimage", :method => "get") do %>
 		<%= label_tag(:url, "Url:") %>
@@ -41,16 +38,11 @@
 		<%= submit_tag("Search", :class => 'getimage') %>
 		<% end %>
 	</div>
-	<table id="box-table-a">
-		<thead>
-			<tr>
-				<th scope="col">Foto</th>
-			</tr>
-		</thead>
-		<% @gunpla.images.each do |image|%>
-		<tr>
-			<td><%= image_tag(image.localpath) %></td>
-		</tr>
-		<% end %>
-	</table>
+	<% @gunpla.images.each do |image|%>
+	<div class="imagebox">
+		<%= image_tag(image.name, :class => "thumb")%>
+		<%= button_to "X", { :action => "deleteimage", :imageid => image.id, :gunplaid => @gunpla.id }, :confirm => "Confermare la cancellazione?", :method => :delete %>
+	</div>
+	
+	<% end %>
 </div>

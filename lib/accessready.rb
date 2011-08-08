@@ -18,6 +18,16 @@ class Accessready
        if @connection  then @connection.disconnect end
     end
     
+    def getproduct (code)
+      if @connection == nil then self.open end
+      sth = @connection.prepare ("SELECT * FROM Articoli WHERE [Codice Articolo] = '#{code}'")
+      sth.execute
+      product = sth.fetch
+      puts product.inspect
+      self.close
+      return product
+    end
+    
     def getcategories
       if @connection == nil then self.open end
       sth = @connection.prepare ("SELECT * FROM [Articoli categorie] WHERE CodiceAlternativo <> '' ")

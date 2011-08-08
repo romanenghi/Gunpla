@@ -25,6 +25,15 @@ class Imagetool
   def save(file_name)
     @img.write(file_name)
   end
+  
+  def delete(file_name)
+    if File.exist?(file_name)
+      File.delete(file_name)
+    else
+      @status = "errore, impossibile trovare il file selezionato"
+      puts @status
+    end
+  end
 
   def addlogo
     logo = Magick::ImageList.new('public\images\logo.png')

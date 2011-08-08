@@ -1,6 +1,13 @@
-<% unless @rows.nil? %>
-	    <% @rows.each do |row| %>
-		<%=  "#{@fields[2]} : #{row[2]}  #{@fields[8]}: #{row[8]}" %></br>
-		<%=  "#{@fields[18]} : #{row[18]}"%></br>
-		<% end %>
-<% end %>
+<table id="box-table-a">
+	<thead>
+		<tr>
+			<th scope="col">Codice Prodotto</th>
+		</tr>
+	</thead>
+	<tr>
+		<td><%= @readyproduct[2] %></td>
+		<td><%= @readyproduct[8] %></td>
+		<td><%= @readyproduct[18] %></td>
+		<td><%= @readyproduct[13] %></td>
+	</tr>
+</table>

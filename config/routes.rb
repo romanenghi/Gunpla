@@ -10,6 +10,8 @@ Gundam::Application.routes.draw do
   match '/exportCVS', :to => 'gunplas#exportCVS'
   match '/getnewimage', :to => 'gunplas#getnewimage'
   match '/categories', :to => 'gunplas#categories'
+  match '/getcategories', :to => 'gunplas#getcategories'
+  match '/deleteimage', :to => 'gunplas#deleteimage'
   root :to => 'gunplas#index'
   
 end

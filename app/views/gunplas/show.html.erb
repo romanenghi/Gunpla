@@ -35,7 +35,7 @@
 
 	<div id="tabs-3">
 		<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
-		<%= render "dataready" %>
+		<%= if @readyproduct != nil then render "dataready" end %>
 	</div>
 
 </div>

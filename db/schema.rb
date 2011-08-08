@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110709180919) do
   end
 
   create_table "images", :force => true do |t|
+    t.string   "name"
     t.integer  "gunpla_id"
     t.integer  "imagetype_id"
     t.boolean  "defaultimage"

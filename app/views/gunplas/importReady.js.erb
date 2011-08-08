@@ -1,8 +1,8 @@
 
   $(".ready")
     .bind("ajaxSuccess" , function(){
-        $("#dataready").html('<%=escape_javascript(render 'dataready')%>');
+        $("#tabs-3").html('<%=escape_javascript(render 'dataready')%>');
     })
     .bind("ajaxSend", function(){
-        $("#dataready").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
+        $("#tabs-3").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
     });

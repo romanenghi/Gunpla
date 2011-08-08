@@ -1,6 +1,7 @@
 class CreateImages < ActiveRecord::Migration
   def self.up
     create_table :images do |t|
+      t.string :name
       t.integer :gunpla_id
       t.integer :imagetype_id
       t.boolean :defaultimage

@@ -64,7 +64,7 @@ class GunplasController < ApplicationController
     respond_to do |format|
       if @gunpla.save
         format.html { redirect_to @gunpla, notice: 'Gunpla was successfully created.' }
-       else
+      else
         format.html { render action: "new" }
       end
     end
@@ -102,31 +102,9 @@ class GunplasController < ApplicationController
     @page_title = @gunpla.code
   end
 
-  def ready
-    @page_title = "Ready pro"
-    if params[:string] != nil then
-      db = AccessDb.new('C:\script\ready\Ready_backup.RDB')
-      db.open
-      query = "SELECT * FROM Articoli WHERE Descrizione LIKE '#{params[:string]}%'"
-      db.query(query)
-      @field_names = db.fields
-      @rows = db.data
-      puts query
-    db.close
-    end
-  end
-
   def importReady
     @gunpla = Gunpla.find(params[:id])
-    db = AccessDb.new('C:\script\ready\Ready_backup.RDB')
-    db.open
-    query = "SELECT * FROM Articoli WHERE [Codice Articolo] = '#{@gunpla.code}'"
-    db.query(query)
-    @fields = db.fields
-    @rows = db.data
-    puts query
-    puts @rows
-    db.close
+    @readyproduct = Accessready.new.getproduct(@gunpla.code)
     respond_to do |format|
       format.js
       format.html
@@ -259,13 +237,14 @@ class GunplasController < ApplicationController
     @image = Image.new
     @image.gunpla_id = params[:gunplaid]
     @image.remotepath = (params[:url])
-    @image.localpath = "#{@gunpla.code}_#{@gunpla.images.length+1}.jpg"
+    @image.name = "#{@gunpla.code}_#{@gunpla.images.length+1}.jpg"
+    @image.localpath = "public/images/#{@image.name}"
     @img=Imagetool.new
     @img.getimage(params[:url])
     respond_to do |format|
       if @img.status == "ok"
         @image.save
-        @img.save("public/images/#{@gunpla.code}_#{@gunpla.images.length+1}.jpg")
+        @img.save(@image.localpath)
         format.html { redirect_to @gunpla, notice: 'Immagine aggiunta con successo' }
       else
         format.html { redirect_to @gunpla, notice: 'Errore' }
@@ -273,19 +252,38 @@ class GunplasController < ApplicationController
     end
   end
 
+  def deleteimage
+    @gunpla = Gunpla.find(params[:gunplaid])
+    @image = Image.find(params[:imageid])
+    @img = Imagetool.new
+    @img.delete(@image.localpath)
+    respond_to do |format|
+      if @img.status == "ok"
+        @image.destroy
+        format.html { redirect_to @gunpla, notice: 'Immagine elimitana con successo' }
+      else
+        format.html { redirect_to @gunpla, notice: @img.status }
+      end
+    end
+  end
+
   def categories
     @page_title = "Gestione categorie"
     @categories = Category.find(:all)
+  end
 
-    if params[:commit] == "Importa" then
-      @readycategories = Accessready.new.getcategories
-      @readycategories.each do |readycategory|
-        category = Category.where("codiceready = ?", readycategory[4]).first
-        if category == nil then category = Category.new end
-        category.name = readycategory[2]
-        category.codiceready = readycategory[4]
-        category.save
-      end
+  def getcategories
+    @readycategories = Accessready.new.getcategories
+    @readycategories.each do |readycategory|
+      category = Category.where("codiceready = ?", readycategory[4]).first
+      if category == nil then category = Category.new end
+      category.name = readycategory[2]
+      category.codiceready = readycategory[4]
+      category.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to categories_path, notice: 'Categorie importate con successo' }
     end
 
   end

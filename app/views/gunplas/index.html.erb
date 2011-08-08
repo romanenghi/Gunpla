@@ -22,7 +22,7 @@
 		else "unselected" end %>'>
 			<td><%= link_to 'Show', gunpla %></td>
 			<td><%= link_to 'Destroy', gunpla, confirm: 'Are you sure?', method: :delete %></td>
-			<td><%= (gunpla.images.first == nil) ? () : image_tag(gunpla.images.first.localpath, :height => '128', :width => '128') %></td>
+			<td><%= (gunpla.images.first == nil) ? () : image_tag(gunpla.images.first.name, :class => "thumb") %></td>
 			<td><%= gunpla.code %></td>
 			<td><%= gunpla.description %></td>
 			<td><%= gunpla.publicprice %></td>
