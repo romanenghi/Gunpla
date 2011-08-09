@@ -1,19 +1,17 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-$(function() {
-// initialize scrollable
-$(".scrollable").scrollable();
-}); 
 
 jQuery(document).ready(function() {
 	$("div#tabs").tabs();
 });
-$(function() {
-	$('.thumb').click(function() {
-		$( "#dialog" ).dialog();
-	});
+
+
+$(window).load(function() {
+    $("#mcs_container").mCustomScrollbar("vertical",400,"easeOutCirc",1.05,"auto","yes","yes",10);
 });
+
+
 
 
 jQuery(function() {

@@ -1,27 +1,17 @@
-<!-- "previous page" action -->
-<a class="prev browse left"></a>
-
-<!-- "next page" action -->
-
-<!-- root element for scrollable -->
-<div class="scrollable">
-
-	<!-- root element for the scrollable elements -->
-	<div class="items">
-
-		<div class="item">
-			<!-- first row -->
-			<% @results.each do |res| %>
-
-			<!-- image -->
-			<%= image_tag(res.content) %>
-
-			<% end %>
+<div id="mcs_container">
+	<div class="customScrollBox">
+		<div class="container">
+			<div class="content">
+				<% @results.each do |result| %>
+				<%= image_tag(result.content)%>
+				<% end %>
+			</div>
 		</div>
-
+		<div class="dragger_container">
+			<div class="dragger"></div>
+		</div>
 	</div>
-
+	<!-- scroll buttons -->
+	<a class="scrollUpBtn" href="#"></a><a class="scrollDownBtn" href="#"></a>
 </div>
-
-</div>
-<a class="next browse right"></a>
+</div></div> 

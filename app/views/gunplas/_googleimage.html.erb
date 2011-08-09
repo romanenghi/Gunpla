@@ -1,5 +1,5 @@
 <div id="googleimage">
-	<%= form_tag("/googleimage", :method => "get") do %>
+	<%= form_tag("/googleimage", :method => "get", :remote => true) do %>
 		<%= label_tag(:query, "Stringa di ricerca:") %>
 		<%= text_field_tag(:query, @gunpla.description, :size => 40) %>
 		<%= submit_tag("Search") %>

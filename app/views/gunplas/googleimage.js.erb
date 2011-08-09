@@ -1,0 +1,7 @@
+  $(".hlj")
+    .bind("ajaxSuccess" , function(){
+        $("#tabs-2").html('<%= @status %><%=escape_javascript(render 'googleimage')%>');
+    })
+    .bind("ajaxSend", function(){
+        $("#tabs-2").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
+    });
