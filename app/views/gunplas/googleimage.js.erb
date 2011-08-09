@@ -1,7 +1,9 @@
-  $(".hlj")
+  jQuery(document)
     .bind("ajaxSuccess" , function(){
-        $("#tabs-2").html('<%= @status %><%=escape_javascript(render 'googleimage')%>');
+        $("#googleresults").html('<%=escape_javascript(render 'googleimage')%>');
+        $("#mcs_container").mCustomScrollbar("vertical",400,"easeOutCirc",1.05,"auto","yes","yes",10);
     })
     .bind("ajaxSend", function(){
-        $("#tabs-2").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
+        $("#googleresults").html('<%=escape_javascript(image_tag("/images/loading.gif"))%>');
     });
+

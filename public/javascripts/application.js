@@ -7,9 +7,7 @@ jQuery(document).ready(function() {
 });
 
 
-$(window).load(function() {
-    $("#mcs_container").mCustomScrollbar("vertical",400,"easeOutCirc",1.05,"auto","yes","yes",10);
-});
+
 
 
 

@@ -1,13 +1,21 @@
 <h3>Anagrafica di base</h3>
-<p class="notice"></p>
+<p class="notice"><%= notice %></p>
 <div id="baseData">
 	<%= render "basedata"%>
 </div>
 <div id="imagebox">
-		<%= render "imagelist"%>
-		<%= render "googleimage"%>
+	<%= render "imagelist"%>
+	<div id="googleimage">
+		<%= form_tag("/googleimage", :method => "get", :remote => true) do %>
+		<%= label_tag(:query, "Stringa di ricerca:") %>
+		<%= text_field_tag(:query, @gunpla.description, :size => 40) %>
+		<%= hidden_field_tag(:page, "0") %>
+		<%= submit_tag("Search") %>
+		<% end %>
+	</div>
+	<div id="googleresults">
+    </div>
 </div>
-
 <div id="tabs">
 	<ul>
 		<li>
@@ -20,11 +28,9 @@
 			<a href="#tabs-3">ReadyData</a>
 		</li>
 	</ul>
-
 	<div id="tabs-1">
 		<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
 	</div>
-
 	<div id="tabs-2">
 		<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
 		<%= label_tag(:code, "Codice HLJ:") %>
@@ -34,11 +40,8 @@
 		<% end %>
 		<%= if @gunpla.datahlj != nil then render "datahlj" end %>
 	</div>
-
 	<div id="tabs-3">
 		<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
 		<%= if @readyproduct != nil then render "dataready" end %>
 	</div>
-
 </div>
-

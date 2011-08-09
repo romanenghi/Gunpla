@@ -257,9 +257,9 @@ class GunplasController < ApplicationController
     @image = Image.find(params[:imageid])
     @img = Imagetool.new
     @img.delete(@image.localpath)
+    @image.destroy
     respond_to do |format|
-      if @img.status == "ok"
-        @image.destroy
+      if @img.status == "ok" 
         format.html { redirect_to @gunpla, notice: 'Immagine elimitana con successo' }
       else
         format.html { redirect_to @gunpla, notice: @img.status }
@@ -289,9 +289,14 @@ class GunplasController < ApplicationController
   
   def googleimage
     searchstring = URI.encode_www_form_component(params[:query])
+    page = params[:page]
+    start = page * 18
     if searchstring != ""
-      @doc = Nokogiri.HTML(open("http://www.google.com/search?q=#{searchstring}&hl=it&sa=G&biw=1262&bih=621&gbv=2&tbm=isch&sout=1"))
-      @results = @doc.xpath('//td/a/img/@src')
+      @doc = Nokogiri.HTML(open("http://www.google.com/search?q=#{searchstring}&hl=it&sa=G&biw=1262&bih=621&gbv=2&tbm=isch&sout=1&start=#{start}"))
+      @results = @doc.xpath('//ol/div/table/tr/td/a/@href')
+    end
+    @results.each do |result|
+     puts (URI.extract(result.content)).first.scan(/.*jpg/)
     end
   end
 

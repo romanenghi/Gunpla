@@ -1,17 +1,1 @@
-<div id="mcs_container">
-	<div class="customScrollBox">
-		<div class="container">
-			<div class="content">
-				<% @results.each do |result| %>
-				<%= image_tag(result.content)%>
-				<% end %>
-			</div>
-		</div>
-		<div class="dragger_container">
-			<div class="dragger"></div>
-		</div>
-	</div>
-	<!-- scroll buttons -->
-	<a class="scrollUpBtn" href="#"></a><a class="scrollDownBtn" href="#"></a>
-</div>
-</div></div> 
+<%= render 'googleimage'%>
