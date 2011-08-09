@@ -1,5 +1,11 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
+$(function() {
+// initialize scrollable
+$(".scrollable").scrollable();
+}); 
+
 jQuery(document).ready(function() {
 	$("div#tabs").tabs();
 });
@@ -8,6 +14,8 @@ $(function() {
 		$( "#dialog" ).dialog();
 	});
 });
+
+
 jQuery(function() {
 	jQuery('#cropbox').Jcrop({
 		onChange : showCoords,

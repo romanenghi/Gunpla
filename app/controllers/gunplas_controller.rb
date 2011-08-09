@@ -285,7 +285,14 @@ class GunplasController < ApplicationController
     respond_to do |format|
       format.html { redirect_to categories_path, notice: 'Categorie importate con successo' }
     end
-
+  end
+  
+  def googleimage
+    searchstring = URI.encode_www_form_component(params[:query])
+    if searchstring != ""
+      @doc = Nokogiri.HTML(open("http://www.google.com/search?q=#{searchstring}&hl=it&sa=G&biw=1262&bih=621&gbv=2&tbm=isch&sout=1"))
+      @results = @doc.xpath('//td/a/img/@src')
+    end
   end
 
 end

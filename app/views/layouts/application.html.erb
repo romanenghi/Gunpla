@@ -8,6 +8,15 @@
   <%= javascript_include_tag "jquery.Jcrop.js" %>
   <%= stylesheet_link_tag("jquery-ui-1.8.14.custom") %>
   <%= stylesheet_link_tag("jquery.Jcrop.css") %>
+  <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
+	 
+ 
+	<!-- standalone page styling (can be removed) --> 
+	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
+ 
+ 
+	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/scrollable-horizontal.css" /> 
+	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/scrollable-buttons.css" /> 
   <%= csrf_meta_tag %>
 </head>
 <body id="store">
@@ -21,6 +30,7 @@
 				<li><%= link_to "Importa da CSV", cosmicimport_path %></li>
 				<li><%= link_to "Esporta ", export_path %></li>
 				<li><%= link_to "Gestione Categorie ", categories_path %></li>
+				<li><%= link_to "Ricerca Immagini ", googleimage_path %></li>
 			</ul>
 		</div>
 		<div id="main">

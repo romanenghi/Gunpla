@@ -28,21 +28,4 @@
 	<% end %>
 </div>
 <% end %>
-<div id='images'>
-	<h3>Immagini associate</h3>
-	<div id="addimages">
-		<%= form_tag("/getnewimage", :method => "get") do %>
-		<%= label_tag(:url, "Url:") %>
-		<%= text_field_tag(:url) %>
-		<%= hidden_field_tag(:gunplaid, @gunpla.id) %>
-		<%= submit_tag("Search", :class => 'getimage') %>
-		<% end %>
-	</div>
-	<% @gunpla.images.each do |image|%>
-	<div class="imagebox">
-		<%= image_tag(image.name, :class => "thumb")%>
-		<%= button_to "X", { :action => "deleteimage", :imageid => image.id, :gunplaid => @gunpla.id }, :confirm => "Confermare la cancellazione?", :method => :delete %>
-	</div>
-	
-	<% end %>
-</div>
+

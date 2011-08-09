@@ -1,0 +1,27 @@
+<!-- "previous page" action -->
+<a class="prev browse left"></a>
+
+<!-- "next page" action -->
+
+<!-- root element for scrollable -->
+<div class="scrollable">
+
+	<!-- root element for the scrollable elements -->
+	<div class="items">
+
+		<div class="item">
+			<!-- first row -->
+			<% @results.each do |res| %>
+
+			<!-- image -->
+			<%= image_tag(res.content) %>
+
+			<% end %>
+		</div>
+
+	</div>
+
+</div>
+
+</div>
+<a class="next browse right"></a>
