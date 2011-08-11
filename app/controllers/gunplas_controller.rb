@@ -205,17 +205,22 @@ class GunplasController < ApplicationController
         datacosmic.code = row[0].strip # Seleziona la colonna n. 0, corrispondente al codice cosmic
         datacosmic.description = row[2].strip # Seleziona la colonna n. 2, corrispondente alla descrizione secondo cosmic
         datacosmic.jancode = row[3].strip # Importa il cosmic Jan Code
-        datacosmic.publicprice = (row[5].strip) #Importa il prezzo al pubblico consigliato da cosmic
-
+        datacosmic.publicprice = row[5][/\d*,\d*/].to_f #Importa il prezzo al pubblico consigliato da cosmic
         gunplacode = cosmicToHlj(datacosmic.jancode)
-        if Gunpla.where("code = ?",gunplacode).count == 0  #se non esiste il gunpla corrispondente lo crea
+        if Gunpla.where("code = ?",gunplacode).count == 0  #se non esiste il gunpla corrispondente lo crea 
           gunpla = Gunpla.new
         gunpla.code = gunplacode
+        #associa come descrizione e prezzo di default quelli del file di cosmic
+        gunpla.description = datacosmic.description
+        gunpla.publicprice = datacosmic.publicprice
         gunpla.datacosmic = datacosmic
         gunpla.save
         else
           gunpla = Gunpla.where("code = ?",gunplacode).first #se esiste il gunpla. ci associa i dati di cosmic
         gunpla.datacosmic = datacosmic
+        #aggiorna in ogni caso i prezzi
+        gunpla.datacosmic.publicprice = row[5][/\d*,\d*/].to_f
+        gunpla.publicprice = datacosmic.publicprice
         gunpla.save
         end
       end
@@ -223,11 +228,22 @@ class GunplasController < ApplicationController
   end
 
   def cosmicToHlj(cosmicCode)
-    suffix = cosmicCode[0,2]
-    result = case suffix
-    when "01" then "BAN9" + cosmicCode[2..cosmicCode.length]
-    when "00" then "BAN" + cosmicCode[2..cosmicCode.length]
-    else "Invalid"
+    
+    if cosmicCode.length == 7
+      suffix = cosmicCode[0,2]
+      result = case suffix
+      when "01" then "BAN9" + cosmicCode[2..cosmicCode.length]
+      when "00" then "BAN" + cosmicCode[2..cosmicCode.length]
+      else "Invalid#{cosmicCode}"
+      end
+    elsif cosmicCode.length == 6
+      suffix = cosmicCode[0,1]
+      result = case suffix
+      when "1" then "BAN9" + cosmicCode[1..cosmicCode.length]
+      else "Invalid#{cosmicCode}"
+      end
+    else
+      result = "Invalid#{cosmicCode}"
     end
     return result
   end
@@ -259,7 +275,7 @@ class GunplasController < ApplicationController
     @img.delete(@image.localpath)
     @image.destroy
     respond_to do |format|
-      if @img.status == "ok" 
+      if @img.status == "ok"
         format.html { redirect_to @gunpla, notice: 'Immagine elimitana con successo' }
       else
         format.html { redirect_to @gunpla, notice: @img.status }
@@ -286,7 +302,7 @@ class GunplasController < ApplicationController
       format.html { redirect_to categories_path, notice: 'Categorie importate con successo' }
     end
   end
-  
+
   def googleimage
     searchstring = URI.encode_www_form_component(params[:query])
     page = params[:page]
@@ -296,7 +312,7 @@ class GunplasController < ApplicationController
       @results = @doc.xpath('//ol/div/table/tr/td/a/@href')
     end
     @results.each do |result|
-     puts (URI.extract(result.content)).first.scan(/.*jpg/)
+      puts (URI.extract(result.content)).first.scan(/.*jpg/)
     end
   end
 
