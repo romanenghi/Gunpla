@@ -1,44 +1,79 @@
 require 'odbc'
 
+
+
 class Accessready
-    attr_accessor :dns, :connection, :data, :fields, :categories
+  attr_accessor :dns, :connection, :data, :fields, :categories
+  def initialize(dns=nil)
+    @dns = "Prova"
+    @connection = nil
+    @data = nil
+    @fields = nil
+  end
 
-    def initialize(dns=nil)
-        @dns = "Prova"
-        @connection = nil
-        @data = nil
-        @fields = nil
-    end
+  def open
+    @connection = ODBC.connect(dns)
+  end
 
-    def open
-        @connection = ODBC.connect(dns)
-    end
-    
-    def close   
-       if @connection  then @connection.disconnect end
-    end
-    
-    def getproduct (code)
-      if @connection == nil then self.open end
-      sth = @connection.prepare ("SELECT * FROM Articoli WHERE [Codice Articolo] = '#{code}'")
+  def close
+    if @connection  then @connection.disconnect end
+  end
+
+  def getproduct (code)
+    if @connection == nil then self.open end
+    sth = @connection.prepare ("SELECT * FROM Articoli WHERE [Codice Articolo] = '#{code}'")
+    sth.execute
+    product = sth.fetch
+    self.close
+    return product
+  end
+
+  def getcategories
+    if @connection == nil then self.open end
+    sth = @connection.prepare ("SELECT * FROM [Articoli categorie] WHERE CodiceAlternativo <> '' ")
+    sth.execute
+    @categories = sth.fetch_all
+    self.close
+    return @categories
+  end
+
+  def gethg
+    open
+    query = "SELECT * FROM [Articoli] WHERE [ID Colore] = 39"
+    sth = @connection.prepare(query)
+    sth.execute
+    products = sth.fetch_all
+    close
+    puts products
+    return products
+  end
+  def getimages(code, type)
+    product = getproduct(code)
+    unless product == nil
+      idproduct = product[0]
+      self.open
+      query = "SELECT * FROM FotoLinks WHERE IdArticolo = #{idproduct}"
+      sth = @connection.prepare(query)
       sth.execute
-      product = sth.fetch
-      puts product.inspect
+      links= sth.fetch_all
       self.close
-      return product
+      if links != nil
+        foto = []
+        links.each do |link|
+          self.open
+          query = "SELECT * FROM [Foto] WHERE ID = #{link[2]} and IdTipoFoto = #{type}"
+          puts query
+          sth = @connection.prepare (query)
+          sth.execute
+          results = sth.fetch_all
+          unless results == nil 
+          foto << results.first
+          end
+          close
+        end
+        puts "#{foto} ***********************************"
+      return foto
+      end
     end
-    
-    def getcategories
-      if @connection == nil then self.open end
-      sth = @connection.prepare ("SELECT * FROM [Articoli categorie] WHERE CodiceAlternativo <> '' ")
-      sth.execute
-      @categories = sth.fetch_all 
-      self.close
-      return @categories
-    end
-
- 
+  end
 end
-
-tmp = Accessready.new
-tmp.getcategories

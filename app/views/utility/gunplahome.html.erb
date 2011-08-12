@@ -1,0 +1,19 @@
+<div id=gundam>
+	<div id="high grade">
+		<%= image_tag("hg.jpg")%>
+		<table>
+			<% @gunplahg.each do |gunpla|%>
+			<tr>
+				<td><%= gunpla[8] %></td>
+				<td><%= link_to("http://www.starshopbs.com/#{gunpla[9]+gunpla[8].gsub(" ","-")}") %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<div id="master grade">
+		<%= image_tag("mg.jpg")%>
+	</div>
+	<div id="perfect grade">
+		<%= image_tag("pg.jpg")%>
+	</div>
+</div>

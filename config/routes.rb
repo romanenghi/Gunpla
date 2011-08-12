@@ -13,6 +13,8 @@ Gundam::Application.routes.draw do
   match '/getcategories', :to => 'gunplas#getcategories'
   match '/deleteimage', :to => 'gunplas#deleteimage'
   match '/googleimage', :to => 'gunplas#googleimage'
+  match '/utility', :to => 'utility#index'
+  match '/gunplahome', :to => 'utility#gunplahome'
   root :to => 'gunplas#index'
   
 end
