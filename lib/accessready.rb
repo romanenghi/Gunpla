@@ -39,12 +39,65 @@ class Accessready
 
   def gethg
     open
-    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 39"
+    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 39  AND IdLanguage = 1"
     sth = @connection.prepare(query)
     sth.execute
     products = sth.fetch_all
+    product_filtered = []
     close
-    return products
+    products.each do |product|
+      categories = product[50].split
+      categories.each do |category|
+        if category == "98"
+          product_filtered << product
+          puts product[11]
+        end
+      end
+    end
+    product_filtered.sort_by!{|product| product[13]}
+    return product_filtered
+  end
+  
+  def getmg
+    open
+    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 25  AND IdLanguage = 1"
+    sth = @connection.prepare(query)
+    sth.execute
+    products = sth.fetch_all
+    product_filtered = []
+    close
+    products.each do |product|
+      categories = product[50].split
+      categories.each do |category|
+        if category == "98"
+          product_filtered << product
+          puts product[11]
+        end
+      end
+    end
+    product_filtered.sort_by!{|product| product[13]}
+    return product_filtered
+  end
+  
+  def getpg
+    open
+    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 41 AND IdLanguage = 1"
+    sth = @connection.prepare(query)
+    sth.execute
+    products = sth.fetch_all
+    product_filtered = []
+    close
+    products.each do |product|
+      categories = product[50].split
+      categories.each do |category|
+        if category == "98"
+          product_filtered << product
+          puts product[10]
+        end
+      end
+    end
+    product_filtered.sort_by!{|product| product[13]}
+    return product_filtered
   end
 
   def getimages(code, type)
