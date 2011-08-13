@@ -4,8 +4,10 @@
 		<table>
 			<% @gunplahg.each do |gunpla|%>
 			<tr>
-				<td><%= gunpla[8] %></td>
-				<td><%= link_to("http://www.starshopbs.com/#{gunpla[9]+gunpla[8].gsub(" ","-")}") %></td>
+				<td><%= image_tag("http://www.starshopbs.com/files/Madhouse_Files/Foto/#{gunpla.last}", :height => 100) %></td>
+				<td><%= link_to(gunpla[10],"http://www.starshopbs.com/#{format_url(gunpla[13])}_#{format_url(gunpla[10])}.1.#{gunpla[42].strip}.#{gunpla[12]}.gp.#{gunpla[4]}.-1.uw.aspx") %></td>
+				<td><%= gunpla[11] %></td>
+				<td><%= gunpla[13] %></td>
 			</tr>
 			<% end %>
 		</table>

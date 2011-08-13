@@ -39,14 +39,14 @@ class Accessready
 
   def gethg
     open
-    query = "SELECT * FROM [Articoli] WHERE [ID Colore] = 39"
+    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 39"
     sth = @connection.prepare(query)
     sth.execute
     products = sth.fetch_all
     close
-    puts products
     return products
   end
+
   def getimages(code, type)
     product = getproduct(code)
     unless product == nil
@@ -62,16 +62,14 @@ class Accessready
         links.each do |link|
           self.open
           query = "SELECT * FROM [Foto] WHERE ID = #{link[2]} and IdTipoFoto = #{type}"
-          puts query
           sth = @connection.prepare (query)
           sth.execute
           results = sth.fetch_all
-          unless results == nil 
+          unless results == nil
           foto << results.first
           end
           close
         end
-        puts "#{foto} ***********************************"
       return foto
       end
     end
