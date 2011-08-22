@@ -37,94 +37,47 @@ class Accessready
     return @categories
   end
 
-  def gethg
-    open
-    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 39  AND IdLanguage = 1"
-    sth = @connection.prepare(query)
-    sth.execute
-    products = sth.fetch_all
-    product_filtered = []
-    close
-    products.each do |product|
-      categories = product[50].split
-      categories.each do |category|
-        if category == "98"
-          product_filtered << product
-          puts product[11]
+  def getproductstype(type)
+    case type
+    when "pg"
+      query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 41 AND IdLanguage = 1"
+    when "mg"
+      query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 25 AND IdLanguage = 1"
+    when "hg"
+      query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 39 AND IdLanguage = 1"
+    else
+    query = ""
+    end
+
+    unless query == ""
+      open
+      sth = @connection.prepare(query)
+      sth.execute
+      products = sth.fetch_all
+      product_filtered = []
+      close
+      products.each do |product|
+        categories = product[50].split
+        categories.each do |category|
+          if category == "98"
+            product_filtered << product
+            puts product[10]
+          end
         end
       end
-    end
-    product_filtered.sort_by!{|product| product[13]}
+      product_filtered.sort_by!{|product| product[13]}
     return product_filtered
-  end
-  
-  def getmg
-    open
-    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 25  AND IdLanguage = 1"
-    sth = @connection.prepare(query)
-    sth.execute
-    products = sth.fetch_all
-    product_filtered = []
-    close
-    products.each do |product|
-      categories = product[50].split
-      categories.each do |category|
-        if category == "98"
-          product_filtered << product
-          puts product[11]
-        end
-      end
     end
-    product_filtered.sort_by!{|product| product[13]}
-    return product_filtered
-  end
-  
-  def getpg
-    open
-    query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 41 AND IdLanguage = 1"
-    sth = @connection.prepare(query)
-    sth.execute
-    products = sth.fetch_all
-    product_filtered = []
-    close
-    products.each do |product|
-      categories = product[50].split
-      categories.each do |category|
-        if category == "98"
-          product_filtered << product
-          puts product[10]
-        end
-      end
-    end
-    product_filtered.sort_by!{|product| product[13]}
-    return product_filtered
   end
 
   def getimages(code, type)
-    product = getproduct(code)
-    unless product == nil
-      idproduct = product[0]
       self.open
-      query = "SELECT * FROM FotoLinks WHERE IdArticolo = #{idproduct}"
+      query = "SELECT `Articoli`.`ID articolo`, `Articoli`.`Descrizione`, `Articoli`.`Codice Articolo`, `FotoLinks`.`IdFoto`, `Foto`.`IdTipoFoto`, `Foto`.`Nomefile` FROM `FotoLinks`, `Articoli`, `Foto` WHERE `FotoLinks`.`IdArticolo` = `Articoli`.`ID articolo` AND `Foto`.`ID` = `FotoLinks`.`IdFoto` AND `Articoli`.`Codice Articolo` = '#{code}' AND `Foto`.`IdTipoFoto` = #{type}"
       sth = @connection.prepare(query)
       sth.execute
-      links= sth.fetch_all
+      images = sth.fetch_all
       self.close
-      if links != nil
-        foto = []
-        links.each do |link|
-          self.open
-          query = "SELECT * FROM [Foto] WHERE ID = #{link[2]} and IdTipoFoto = #{type}"
-          sth = @connection.prepare (query)
-          sth.execute
-          results = sth.fetch_all
-          unless results == nil
-          foto << results.first
-          end
-          close
-        end
-      return foto
-      end
-    end
+      puts images
+      return images
   end
 end

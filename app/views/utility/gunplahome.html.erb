@@ -1,35 +1,6 @@
 <div id=container>
-	<div id="master grade">
-		<%= image_tag("mg.jpg")%>
-		<table>
-			<% @gunplamg.each do |gunpla|%>
-			<tr style="background: <%= (gunpla[29] > 0) ? () : ("grey")%>">
-				<td><%= image_tag("http://www.starshopbs.com/files/Madhouse_Files/Foto/#{gunpla.last}", :height => 50, :class => "zoom") %></td>
-				<td><%= link_to(gunpla[10],"http://www.starshopbs.com/#{format_url(gunpla[13])}_#{format_url(gunpla[10])}.1.#{gunpla[42].strip}.#{gunpla[12]}.gp.#{gunpla[4]}.-1.uw.aspx") %></td>
-				<td><%= gunpla[11] %></td>
-				<td><%= gunpla[13] %></td>	
-				<td><%= (gunpla[29] > 0) ? (gunpla[29]):("non disponibile")  %></td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
-	<div id="high grade">
-		<%= image_tag("hg.jpg")%>
-		<table>
-			<% @gunplahg.each do |gunpla|%>
-			<tr style="background: <%= (gunpla[29] > 0) ? () : ("grey")%>">
-				<td><%= image_tag("http://www.starshopbs.com/files/Madhouse_Files/Foto/#{gunpla.last}", :height => 50) %></td>
-				<td><%= link_to(gunpla[10],"http://www.starshopbs.com/#{format_url(gunpla[13])}_#{format_url(gunpla[10])}.1.#{gunpla[42].strip}.#{gunpla[12]}.gp.#{gunpla[4]}.-1.uw.aspx") %></td>
-				<td><%= gunpla[11] %></td>
-				<td><%= gunpla[13] %></td>	
-				<td><%= (gunpla[29] > 0) ? (gunpla[29]):("non disponibile")  %></td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
-	
 	<div id="perfect grade">
-		<%= image_tag("pg.jpg")%>
+		<%= image_tag("1.jpg")%>
 		<table>
 			<% @gunplapg.each do |gunpla|%>
 			<tr style="background: <%= (gunpla[29] > 0) ? () : ("grey")%>">

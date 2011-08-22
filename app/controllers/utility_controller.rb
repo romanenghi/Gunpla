@@ -5,7 +5,7 @@ class UtilityController < ApplicationController
   end
 
   def gunplahome
-    @gunplahg = Accessready.new.gethg
+    @gunplahg = Accessready.new.getproductstype("hg")
     @gunplahg.each do |gunpla|
       img = Accessready.new.getimages(gunpla[11],1)
       unless img == nil
@@ -15,7 +15,7 @@ class UtilityController < ApplicationController
         end
       end
     end
-    @gunplamg = Accessready.new.getmg
+    @gunplamg = Accessready.new.getproductstype("mg")
     @gunplamg.each do |gunpla|
       img = Accessready.new.getimages(gunpla[11],1)
       unless img == nil
@@ -25,7 +25,7 @@ class UtilityController < ApplicationController
         end
       end
     end
-    @gunplapg = Accessready.new.getpg
+    @gunplapg = Accessready.new.getproductstype("pg")
     @gunplapg.each do |gunpla|
       img = Accessready.new.getimages(gunpla[11],1)
       unless img == nil
@@ -36,4 +36,5 @@ class UtilityController < ApplicationController
       end
     end
   end
+  
 end
