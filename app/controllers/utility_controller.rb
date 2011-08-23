@@ -11,6 +11,7 @@ class UtilityController < ApplicationController
     @gunplahgaw = Accessready.new.getproductstype("hgaw")
     @gunplahgfc = Accessready.new.getproductstype("hgfc")
     @gunplarg = Accessready.new.getproductstype("rg")
+    @gunplatool = Accessready.new.getproductstype("tool")
   end
 end
 

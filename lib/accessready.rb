@@ -53,6 +53,8 @@ class Accessready
       idtype = 80
     when "rg"
       idtype = 78
+    when "tool"
+      idtype = 81
     else
     idtype = nil
     end
@@ -71,7 +73,7 @@ class Accessready
         products.each do |product|
           categories = product[6].split
           categories.each do |category|
-            if category == "98"
+            if category == "98" or category == "299"
               gunpla = {'codice' => product[0],
                 'descrizione' => product[1],
                 'categoria' => product[2],
