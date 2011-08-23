@@ -1,16 +1,38 @@
 <div id=container>
 	<div id="perfect grade">
-		<%= image_tag("1.jpg")%>
+		<%= image_tag("pg.jpg")%>
 		<table>
-			<% @gunplapg.each do |gunpla|%>
-			<tr style="background: <%= (gunpla[29] > 0) ? () : ("grey")%>">
-				<td><%= image_tag("http://www.starshopbs.com/files/Madhouse_Files/Foto/#{gunpla.last}", :height => 50) %></td>
-				<td><%= link_to(gunpla[10],"http://www.starshopbs.com/#{format_url(gunpla[13])}_#{format_url(gunpla[10])}.1.#{gunpla[42].strip}.#{gunpla[12]}.gp.#{gunpla[4]}.-1.uw.aspx") %></td>
-				<td><%= gunpla[11] %></td>
-				<td><%= gunpla[13] %></td>	
-				<td><%= (gunpla[29] > 0) ? (gunpla[29]):("non disponibile")  %></td>
-			</tr>
-			<% end %>
+			<%= render :partial => "gunpla", :locals => { :gunplas => @gunplapg } %>
+		</table>
+	</div>
+	<div id="master grade">
+		<%= image_tag("mg.jpg")%>
+		<table>
+			<%= render :partial => "gunpla", :locals => { :gunplas => @gunplamg } %>
+		</table>
+	</div>
+	<div id="high grade">
+		<%= image_tag("hg.jpg")%>
+		<table>
+			<%= render :partial => "gunpla", :locals => { :gunplas => @gunplahg } %>
+		</table>
+	</div>
+	<div id="hgaw">
+		<%= image_tag("hgaw.jpg")%>
+		<table>
+			<%= render :partial => "gunpla", :locals => { :gunplas => @gunplahgaw } %>
+		</table>
+	</div>
+	<div id="hgfc">
+		<%= image_tag("hgfc.jpg")%>
+		<table>
+			<%= render :partial => "gunpla", :locals => { :gunplas => @gunplahgfc } %>
+		</table>
+	</div>
+	<div id="rg">
+		<%= image_tag("rg.jpg")%>
+		<table>
+			<%= render :partial => "gunpla", :locals => { :gunplas => @gunplarg } %>
 		</table>
 	</div>
 </div>

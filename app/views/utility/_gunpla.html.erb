@@ -1,0 +1,12 @@
+<% unless gunplas == nil %>
+<% gunplas.each do |gunpla|%>
+<tr style="background: <%= (gunpla['quantita'].to_i > 0) ? () : ("grey")%>">
+	<td><%= image_tag("http://www.starshopbs.com/files/Madhouse_Files/Foto/#{gunpla['thumb']}", :height => 50) %></td>
+	<td><%= gunpla['codice'] %></td>
+	<td><%= gunpla['descrizione'] %></td>
+	<td><%= gunpla['categoria'] %></td>
+	<td><%= gunpla['prezzo'] %></td>
+	<td><%= (gunpla['quantita'].to_i > 0) ? (gunpla['quantita']):("non disponibile")  %></td>
+</tr>
+<% end %>
+<% end %>

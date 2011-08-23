@@ -37,47 +37,64 @@ class Accessready
     return @categories
   end
 
+  # Recupera dal database tutti i prodotti corrispondenti a un certo tipo (type), opzionalmente
+  # con l'immagine di anteprima (bool miniatures)
   def getproductstype(type)
     case type
     when "pg"
-      query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 41 AND IdLanguage = 1"
+      idtype = 41 
     when "mg"
-      query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 25 AND IdLanguage = 1"
+      idtype = 25 
     when "hg"
-      query = "SELECT * FROM [WebOggetti] WHERE [CustomT2ID] = 39 AND IdLanguage = 1"
+      idtype = 39 
+    when "hgaw"
+      idtype = 79
+    when "hgfc"
+      idtype = 80
+    when "rg"
+      idtype = 78
     else
-    query = ""
+    idtype = nil
     end
 
-    unless query == ""
+    unless idtype == nil
+      query = "SELECT `WebOggetti`.`ProdCode`, `WebOggetti`.`Description`, `WebOggetti`.`CategoryDesc`, `WebOggetti`.`CustomT2Desc`, `WebOggetti`.`IdProduct`, `WebOggetti`.`CustomT2ID`, `WebOggetti`.`ProductCategoriesAndFathers`, `Foto`.`IdTipoFoto`, `Foto`.`Nomefile`, `WebOggetti`.`QTotMagazzino`, `WebOggetti`.`PrezzoListinoUfficiale`, `WebOggetti`.`IdLanguage` FROM `WebOggetti`, `FotoLinks`, `Foto` WHERE `WebOggetti`.`IdProduct` = `FotoLinks`.`IdArticolo` AND `Foto`.`ID` = `FotoLinks`.`IdFoto` AND `WebOggetti`.`CustomT2ID` = #{idtype} AND `Foto`.`IdTipoFoto` = 1 AND `WebOggetti`.`IdLanguage` = 1 ORDER BY `WebOggetti`.`CategoryDesc` DESC"
       open
       sth = @connection.prepare(query)
       sth.execute
       products = sth.fetch_all
-      product_filtered = []
+      gunplas = []
       close
-      products.each do |product|
-        categories = product[50].split
-        categories.each do |category|
-          if category == "98"
-            product_filtered << product
-            puts product[10]
+      if products == nil
+      return gunplas
+      else
+        products.each do |product|
+          categories = product[6].split
+          categories.each do |category|
+            if category == "98"
+              gunpla = {'codice' => product[0],
+                'descrizione' => product[1],
+                'categoria' => product[2],
+                'tipologia' => product[3],
+                'thumb' => product[8],
+                'quantita' => product[9],
+                'prezzo' => product[10]}
+            gunplas << gunpla
+            end
           end
         end
+      return gunplas
       end
-      product_filtered.sort_by!{|product| product[13]}
-    return product_filtered
     end
   end
 
   def getimages(code, type)
-      self.open
-      query = "SELECT `Articoli`.`ID articolo`, `Articoli`.`Descrizione`, `Articoli`.`Codice Articolo`, `FotoLinks`.`IdFoto`, `Foto`.`IdTipoFoto`, `Foto`.`Nomefile` FROM `FotoLinks`, `Articoli`, `Foto` WHERE `FotoLinks`.`IdArticolo` = `Articoli`.`ID articolo` AND `Foto`.`ID` = `FotoLinks`.`IdFoto` AND `Articoli`.`Codice Articolo` = '#{code}' AND `Foto`.`IdTipoFoto` = #{type}"
-      sth = @connection.prepare(query)
-      sth.execute
-      images = sth.fetch_all
-      self.close
-      puts images
-      return images
+    self.open
+    query = "SELECT `Articoli`.`ID articolo`, `Articoli`.`Descrizione`, `Articoli`.`Codice Articolo`, `FotoLinks`.`IdFoto`, `Foto`.`IdTipoFoto`, `Foto`.`Nomefile` FROM `FotoLinks`, `Articoli`, `Foto` WHERE `FotoLinks`.`IdArticolo` = `Articoli`.`ID articolo` AND `Foto`.`ID` = `FotoLinks`.`IdFoto` AND `Articoli`.`Codice Articolo` = '#{code}' AND `Foto`.`IdTipoFoto` = #{type}"
+    sth = @connection.prepare(query)
+    sth.execute
+    images = sth.fetch_all
+    self.close
+    return images
   end
 end
