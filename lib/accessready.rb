@@ -80,7 +80,7 @@ class Accessready
                 'tipologia' => product[3],
                 'thumb' => product[8],
                 'quantita' => product[9],
-                'prezzo' => product[10]}
+                'prezzo' => product[10]*1.2}
             gunplas << gunpla
             end
           end

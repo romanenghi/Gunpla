@@ -1,12 +1,33 @@
-<% unless gunplas == nil %>
-<% gunplas.each do |gunpla|%>
-<tr style="background: <%= (gunpla['quantita'].to_i > 0) ? () : ("grey")%>">
-	<td><%= image_tag("http://www.starshopbs.com/files/Madhouse_Files/Foto/#{gunpla['thumb']}", :height => 50) %></td>
-	<td><%= gunpla['codice'] %></td>
-	<td><%= gunpla['descrizione'] %></td>
-	<td><%= gunpla['categoria'] %></td>
-	<td><%= gunpla['prezzo'] %></td>
-	<td><%= (gunpla['quantita'].to_i > 0) ? (gunpla['quantita']):("non disponibile")  %></td>
-</tr>
-<% end %>
-<% end %>
+<div class="bigBox">
+	<h1 id="mostImportantProducts_Title"><%= title%></h1>
+	<div>
+	<%= image_tag(image)%>
+	<p><%= description %></p>
+	</div>
+	<ul>
+		<% unless gunplas == nil %>
+		<% gunplas.each do |gunpla|%>
+		<li>
+			<a class="imageLink" href=""> <img border="0" alt="<%= gunpla['descrizione'] %>" src="http://www.starshopbs.com/files/Madhouse_Files/Foto/<%= gunpla['thumb'] %>"> </a>
+			<h2><%= gunpla['descrizione'] %></h2>
+			<dl>
+				<dt>
+					Cod. art. :
+				</dt>
+				<dd>
+					<%= gunpla['codice'] %>
+				</dd>
+				<dt>
+					Serie. :
+				</dt>
+				<dd>
+					<%= gunpla['categoria'] %>
+				</dd>
+			</dl>
+			<span class="availability"><strong>Disponibilità:</strong>&nbsp;<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"><%= gunpla['quantita']%></span></span>
+			<h3 class="mainPrice"><%= number_to_currency(gunpla['prezzo'], :precision => 2) %>€</h3>
+			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
+		</li>
+		<% end %>
+	</ul>
+	<% end %>
