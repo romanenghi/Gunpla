@@ -6,7 +6,8 @@ class UtilityController < ApplicationController
 
   def gunplahome
     @gunplapg = Accessready.new.getproductstype("pg")
-    Accessready.new.updategunplahome(render_to_string(:layout => false, :charset => 'ISO-8859-1'))
+    tmp = render_to_string(:layout => false)
+    Accessready.new.updategunplahome(tmp)
   end
 end
 
