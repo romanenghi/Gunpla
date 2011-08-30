@@ -99,4 +99,13 @@ class Accessready
     self.close
     return images
   end
+  
+  def updategunplahome(content)
+      query = "UPDATE  WebVarsValori SET ValoreMemo = ? WHERE NomeVar = 'homeAreaSettings.objPage.elements(1).text'"
+      open
+      sth = @connection.prepare(query)
+      sth.execute(content)
+      @connection.commit
+      close
+  end
 end

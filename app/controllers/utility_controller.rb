@@ -6,6 +6,7 @@ class UtilityController < ApplicationController
 
   def gunplahome
     @gunplapg = Accessready.new.getproductstype("pg")
+    Accessready.new.updategunplahome(render_to_string(:layout => false))
   end
 end
 
