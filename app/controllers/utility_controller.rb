@@ -7,7 +7,10 @@ class UtilityController < ApplicationController
   def gunplahome
     @gunplapg = Accessready.new.getproductstype("pg")
     tmp = render_to_string(:layout => false)
-    Accessready.new.updategunplahome(tmp)
+    aFile = File.new("myString.txt", "w")
+    aFile.write(tmp)
+    aFile.close
+    Accessready.new.updategunplahome(File.new("myString.txt", "r").read)
   end
 end
 
