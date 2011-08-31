@@ -8,7 +8,7 @@
 	<div>
 	<img alt="Pg" src="/images/pg.jpg?1314002404" />
 	<p>Sono model kit prodotti a partire dal 1998
-		In scala 1/60, sono la linea di model kit bandai più complessi e con la qualità  più alta
+		In scala 1/60, sono la linea di model kit bandai più complessi e con la qualità più alta
 		Hanno uno scheletro interno con alcuni componenti metallici che li rende estremamente posabili.
 		Spesso includono dei Led.
 		Sono consigliati solo ai modellisti che hanno già  esperienza.
@@ -35,9 +35,9 @@
 					Zeta Gundam
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">279.90 Eur</h3>
+			<h3 class="mainPrice">279.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -57,9 +57,9 @@
 					Zeta Gundam
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">229.90 Eur</h3>
+			<h3 class="mainPrice">229.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -79,9 +79,9 @@
 					Zeta Gundam
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">224.90 Eur</h3>
+			<h3 class="mainPrice">224.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -101,9 +101,9 @@
 					Gundam Wing
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="noAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_noAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Non Disponibile
-			<h3 class="mainPrice">219.90 Eur</h3>
+			<h3 class="mainPrice">219.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -123,9 +123,9 @@
 					Gundam Wing
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">349.00 Eur</h3>
+			<h3 class="mainPrice">349.00 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -145,9 +145,9 @@
 					Gundam Seed Frame Astrays
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">269.90 Eur</h3>
+			<h3 class="mainPrice">269.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -167,9 +167,9 @@
 					Gundam Seed Destiny
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">299.90 Eur</h3>
+			<h3 class="mainPrice">299.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -189,9 +189,9 @@
 					Gundam Seed
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="noAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_noAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Non Disponibile
-			<h3 class="mainPrice">209.00 Eur</h3>
+			<h3 class="mainPrice">209.00 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -211,9 +211,9 @@
 					Gundam Seed
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="noAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_noAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Non Disponibile
-			<h3 class="mainPrice">239.00 Eur</h3>
+			<h3 class="mainPrice">239.00 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -233,9 +233,9 @@
 					Gundam Seed
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">89.90 Eur</h3>
+			<h3 class="mainPrice">89.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -255,9 +255,9 @@
 					Gundam 0083
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">319.90 Eur</h3>
+			<h3 class="mainPrice">319.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -277,9 +277,9 @@
 					Gundam 0079
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">179.90 Eur</h3>
+			<h3 class="mainPrice">179.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -299,9 +299,9 @@
 					Gundam 0079
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">179.90 Eur</h3>
+			<h3 class="mainPrice">179.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -321,9 +321,9 @@
 					Gundam 0079
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">189.90 Eur</h3>
+			<h3 class="mainPrice">189.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -343,9 +343,9 @@
 					Gundam 00 (Double O)
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
-			<h3 class="mainPrice">79.90 Eur</h3>
+			<h3 class="mainPrice">79.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<li>
@@ -365,9 +365,9 @@
 					Gundam 00 (Double O)
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<span class="noAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_noAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Non Disponibile
-			<h3 class="mainPrice">329.90 Eur</h3>
+			<h3 class="mainPrice">329.90 &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 	</ul>

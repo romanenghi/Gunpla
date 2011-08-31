@@ -28,13 +28,13 @@
 					<%= gunpla['categoria'] %>
 				</dd>
 			</dl>
-			<span class="availability"><strong>Disponibilità :</strong>&nbsp;
+			<span class="availability"><strong>Disponibilit&agrave; :</strong>&nbsp;
 			<% (gunpla['quantita'] > 0 ) ? ( %>
 			<span class="fullAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_fullAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Immediata
 			<% ) : ( %>
 			<span class="noAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_noAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Non Disponibile
 			<% ) %>
-			<h3 class="mainPrice"><%= number_with_precision(gunpla['prezzo'], :precision => 2) %> Eur</h3>
+			<h3 class="mainPrice"><%= number_with_precision(gunpla['prezzo'], :precision => 2) %> &euro;</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<% end %>
