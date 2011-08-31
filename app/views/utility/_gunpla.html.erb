@@ -33,7 +33,7 @@
 			<% ) : ( %>
 			<span class="noAV" style="background: url(&quot;ReadySkins/Skin12/images/ico_availability_noAV.gif&quot;) no-repeat scroll 0% 0% transparent; padding: 1px 0pt 2px 20px;"> Non Disponibile
 			<% ) %>
-			<h3 class="mainPrice"><%= number_to_currency(gunpla['prezzo'], :precision => 2, :unit => "€") %></h3>
+			<h3 class="mainPrice"><%= number_with_precision(gunpla['prezzo'], :precision => 2) %>€</h3>
 			<span style="display: block; clear: both; line-height: 0pt;">&nbsp;</span>
 		</li>
 		<% end %>
