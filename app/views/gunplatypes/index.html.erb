@@ -1,0 +1,33 @@
+<h1>Listing gunplatypes</h1>
+
+<table table id="box-table-a">
+  <tr>
+    <th>Name</th>
+    <th>Sigla</th>
+    <th>Codice interno</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Order</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gunplatypes.each do |gunplatype| %>
+  <tr>
+    <td><%= gunplatype.name %></td>
+    <td><%= gunplatype.sigla %></td>
+    <td><%= gunplatype.codiceinterno %></td>
+    <td><%= gunplatype.description %></td>
+    <td><%= gunplatype.image %></td>
+    <td><%= gunplatype.order %></td>
+    <td><%= link_to 'Show', gunplatype %></td>
+    <td><%= link_to 'Edit', edit_gunplatype_path(gunplatype) %></td>
+    <td><%= link_to 'Destroy', gunplatype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gunplatype', new_gunplatype_path %>

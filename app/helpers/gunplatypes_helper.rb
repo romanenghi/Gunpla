@@ -1,0 +1,2 @@
+module GunplatypesHelper
+end

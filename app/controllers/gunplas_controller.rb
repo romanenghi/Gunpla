@@ -1,8 +1,6 @@
 require 'csv'
 require 'open-uri'
 require 'nokogiri'
-require 'accessdb'
-require 'win32ole'
 
 
 

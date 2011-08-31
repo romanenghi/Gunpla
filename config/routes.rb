@@ -1,4 +1,6 @@
 Gundam::Application.routes.draw do
+  resources :gunplatypes
+
   resources :gunplas
   match '/cosmicimport', :to => 'gunplas#cosmicimport'
   match '/export', :to => 'gunplas#export'
@@ -15,6 +17,7 @@ Gundam::Application.routes.draw do
   match '/googleimage', :to => 'gunplas#googleimage'
   match '/utility', :to => 'utility#index'
   match '/gunplahome', :to => 'utility#gunplahome'
+  match '/type', :to => 'gunplatypes#index'
   root :to => 'gunplas#index'
   
 end

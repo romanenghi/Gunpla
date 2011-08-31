@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @gunplatype.name %>
+</p>
+
+<p>
+  <b>Sigla:</b>
+  <%= @gunplatype.sigla %>
+</p>
+
+<p>
+  <b>Codice interno:</b>
+  <%= @gunplatype.codiceinterno %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @gunplatype.description %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @gunplatype.image %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @gunplatype.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_gunplatype_path(@gunplatype) %> |
+<%= link_to 'Back', gunplatypes_path %>

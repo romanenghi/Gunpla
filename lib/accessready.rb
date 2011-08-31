@@ -1,7 +1,5 @@
 require 'odbc'
 
-
-
 class Accessready
   attr_accessor :dns, :connection, :data, :fields, :categories
   def initialize(dns=nil)
@@ -39,26 +37,7 @@ class Accessready
 
   # Recupera dal database tutti i prodotti corrispondenti a un certo tipo (type), opzionalmente
   # con l'immagine di anteprima (bool miniatures)
-  def getproductstype(type)
-    case type
-    when "pg"
-      idtype = 41 
-    when "mg"
-      idtype = 25 
-    when "hg"
-      idtype = 39 
-    when "hgaw"
-      idtype = 79
-    when "hgfc"
-      idtype = 80
-    when "rg"
-      idtype = 78
-    when "tool"
-      idtype = 81
-    else
-    idtype = nil
-    end
-
+  def getproductstype(idtype)
     unless idtype == nil
       query = "SELECT `WebOggetti`.`ProdCode`, `WebOggetti`.`Description`, `WebOggetti`.`CategoryDesc`, `WebOggetti`.`CustomT2Desc`, `WebOggetti`.`IdProduct`, `WebOggetti`.`CustomT2ID`, `WebOggetti`.`ProductCategoriesAndFathers`, `Foto`.`IdTipoFoto`, `Foto`.`Nomefile`, `WebOggetti`.`QTotMagazzino`, `WebOggetti`.`PrezzoListinoUfficiale`, `WebOggetti`.`IdLanguage` FROM `WebOggetti`, `FotoLinks`, `Foto` WHERE `WebOggetti`.`IdProduct` = `FotoLinks`.`IdArticolo` AND `Foto`.`ID` = `FotoLinks`.`IdFoto` AND `WebOggetti`.`CustomT2ID` = #{idtype} AND `Foto`.`IdTipoFoto` = 1 AND `WebOggetti`.`IdLanguage` = 1 ORDER BY `WebOggetti`.`CategoryDesc` DESC"
       open

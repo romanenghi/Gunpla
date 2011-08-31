@@ -1,16 +1,9 @@
-
-<div id=container>
-	<div id="perfect grade">
+<% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
+	<div id="<%=gunplatypedescr['title']%>">
 		<%= render :partial => "gunpla", :locals => {
-		:gunplas => @gunplapg ,
-		:title => "Perfect Grade",
-		:image =>"pg.jpg",
-		:description =>HTMLEntities.new.encode(%{Sono model kit prodotti a partire dal 1998
-		In scala 1/60, sono la linea di model kit bandai più complessi e con la qualità più alta
-		Hanno uno scheletro interno con alcuni componenti metallici che li rende estremamente posabili.
-		Spesso includono dei Led.
-		Sono consigliati solo ai modellisti che hanno già esperienza.
-		}, :named)
+		:gunplas => @gunplatypelist[index] ,
+		:gunplatype => gunplatypedescr
 		} %>
 	</div>
-</div>
+<% end %>
+
