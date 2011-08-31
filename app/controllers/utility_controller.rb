@@ -1,3 +1,5 @@
+require 'htmlentities'
+
 class UtilityController < ApplicationController
   def index
     @page_title = "Utility"

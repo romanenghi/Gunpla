@@ -1,4 +1,3 @@
-# encoding: ISO-8859-1
 
 <div id=container>
 	<div id="perfect grade">
@@ -6,12 +5,12 @@
 		:gunplas => @gunplapg ,
 		:title => "Perfect Grade",
 		:image =>"pg.jpg",
-		:description =>%{Sono model kit prodotti a partire dal 1998
-		In scala 1/60, sono la linea di model kit bandai più complessi e con la qualità più alta
+		:description =>HTMLEntities.new.encode(%{Sono model kit prodotti a partire dal 1998
+		In scala 1/60, sono la linea di model kit bandai piÃ¹ complessi e con la qualitÃ  piÃ¹ alta
 		Hanno uno scheletro interno con alcuni componenti metallici che li rende estremamente posabili.
 		Spesso includono dei Led.
-		Sono consigliati solo ai modellisti che hanno già  esperienza.
-		}
+		Sono consigliati solo ai modellisti che hanno giÃ  esperienza.
+		}, :named)
 		} %>
 	</div>
 </div>

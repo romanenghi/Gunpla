@@ -10,6 +10,7 @@ gem 'nokogiri'
 gem 'jquery-rails', '>= 1.0.3'
 gem 'formtastic', '~> 1.2.3'
 gem 'ruby-odbc'
+gem 'htmlentities'
 # Use unicorn as the web server
 # gem 'unicorn'
 

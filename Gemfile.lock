@@ -36,6 +36,7 @@ GEM
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
+    htmlentities (4.3.0)
     i18n (0.5.0)
     jquery-rails (1.0.12)
       railties (~> 3.0)
@@ -81,6 +82,7 @@ PLATFORMS
 
 DEPENDENCIES
   formtastic (~> 1.2.3)
+  htmlentities
   jquery-rails (>= 1.0.3)
   nokogiri
   rails (= 3.0.9)
