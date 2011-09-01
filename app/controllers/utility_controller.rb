@@ -35,16 +35,16 @@ class UtilityController < ApplicationController
       aFile = File.new("#{gunplatype.name.strip}.html", "w")
       aFile.write(html)
       aFile.close
-     # ftp = Net::FTP.new('ftp.starshopbs.com')
-     # ftp.passive = true
-     # ftp.login("2039658@aruba.it", "n8uqrrrd")
-     # ftp.chdir('/starshopbs.com/public')
-     # ftp.putbinaryfile("#{gunplatype.name.strip}.html")
-     # ftp.close
+      ftp = Net::FTP.new('ftp.starshopbs.com')
+      ftp.passive = true
+      ftp.login("2039658@aruba.it", "n8uqrrrd")
+      ftp.chdir('/starshopbs.com/public')
+      ftp.putbinaryfile("#{gunplatype.name.gsub(" ","").strip}.html")
+      ftp.close
     end
-       
-       html = doc.xpath("//*[@id='headergundamtype']")
-       Accessready.new.updategunplahome(html.to_s)
+
+    html = doc.xpath("//*[@id='headergundamtype']")
+    Accessready.new.updategunplahome(html.to_s)
   end
 end
 

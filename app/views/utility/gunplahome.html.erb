@@ -1,18 +1,20 @@
 <div id="headergundamtype">
 	<script type="text/javascript">
 		$(document).ready(function() {
+			<% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
 			$("#ImgPerfectGrade").click(function() {
-				$("#content").load('/public/MasterGrade.html');
+				$("#content").load('/public/<%= "#{gunplatypedescr['title'].gsub(" ","").strip}.html'"%>);
 			});
+			<% end %> 
 		});
 	</script>
 	<% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
-	<%= image_tag(gunplatypedescr['image'], :border=>10, :width => 200, :id => "Img#{gunplatypedescr['title'].gsub(" ","").strip}") %>
-	<% end %> <div id="content"></div>
+	<%= image_tag(gunplatypedescr['image'], :id => "Img#{gunplatypedescr['title'].gsub(" ","").strip}", :border=>10, :width => 200 ) %>
+	<% end %> 
+	<div id="content"></div>
 </div>
 <% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
-<div id="<%= gunplatypedescr['title'].strip%>" class="gunplaype">
-	<a name="<%= gunplatypedescr['title']%>"> </A>
+<div id="<%= gunplatypedescr['title'].gsub(" ","").strip%>" class="gunplaype">
 	<%= render :partial => "gunpla", :locals => {
 	:gunplas => @gunplatypelist[index] ,
 	:gunplatype => gunplatypedescr
