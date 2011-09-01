@@ -32,7 +32,7 @@ class UtilityController < ApplicationController
 
     @gunplatypes.each do |gunplatype|
       html = doc.xpath("//*[@id='#{gunplatype.name.strip}']")
-      aFile = File.new("#{gunplatype.name.strip}.html", "w")
+      aFile = File.new("#{gunplatype.name.gsub(" ","").strip}.html", "w")
       aFile.write(html)
       aFile.close
       ftp = Net::FTP.new('ftp.starshopbs.com')
