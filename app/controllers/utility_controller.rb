@@ -31,7 +31,7 @@ class UtilityController < ApplicationController
     # Save a string to a file.
 
     @gunplatypes.each do |gunplatype|
-      html = doc.xpath("//*[@id='#{gunplatype.name.strip}']")
+      html = doc.xpath("//*[@id='#{gunplatype.name.gsub(" ","").strip}']")
       aFile = File.new("#{gunplatype.name.gsub(" ","").strip}.html", "w")
       aFile.write(html)
       aFile.close
