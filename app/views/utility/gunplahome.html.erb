@@ -2,7 +2,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			<% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
-			$("Img#{gunplatypedescr['title'].gsub(" ","").strip}").click(function() {
+			$(<%="Img#{gunplatypedescr['title'].gsub(" ","").strip}"%>).click(function() {
 				$("#content").load('/public/<%= "#{gunplatypedescr['title'].gsub(" ","").strip}.html'"%>);
 			});
 			<% end %> 
