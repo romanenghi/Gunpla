@@ -4,7 +4,7 @@
 <% end %>
 </div>
 <% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
-	<div id="<%=gunplatypedescr['title'].strip%>">
+	<div id="<%=gunplatypedescr['title'].strip%>" class="gunplaype">
 		<a name="<%=gunplatypedescr['title']%>"> </A>
 		<%= render :partial => "gunpla", :locals => {
 		:gunplas => @gunplatypelist[index] ,
