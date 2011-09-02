@@ -80,10 +80,16 @@ class Accessready
   end
   
   def updategunplahome(content)
-      query = "UPDATE  WebVarsValori SET ValoreMemo = ? WHERE NomeVar = 'homeAreaSettings.objPage.elements(1).text'"
+      query = "SELECT RecordStatus FROM WebVarsValori WHERE NomeVar = 'homeAreaSettings.objPage.elements(1).text' AND IdWebArea = 17"
       open
       sth = @connection.prepare(query)
-      sth.execute(content)
+      sth.execute
+      recordstatus = sth.fetch_all.first
+      recordupdate = recordstatus.gsub('S','U')
+      query = "UPDATE  WebVarsValori SET ValoreMemo = ?, RecordStatus = ? WHERE NomeVar = 'homeAreaSettings.objPage.elements(1).text' AND IdWebArea = 17"
+      open
+      sth = @connection.prepare(query)
+      sth.execute(content, recordupdate)
       @connection.commit
       close
   end
