@@ -9,7 +9,7 @@
 		});
 	</script>
 	<% @gunplatypedescription.each_with_index do |gunplatypedescr,index|%>
-	<%= image_tag(gunplatypedescr['image'], :id => "Img#{gunplatypedescr['title'].gsub(" ","").strip}", :border=>10, :width => 200 ) %>
+	<%= image_tag(gunplatypedescr['image'], :id => "Img#{gunplatypedescr['title'].gsub(" ","").strip}", :border=>5, :width => 150 ) %>
 	<% end %> 
 	<div id="content"></div>
 </div>
