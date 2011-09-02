@@ -84,7 +84,7 @@ class Accessready
       open
       sth = @connection.prepare(query)
       sth.execute
-      recordstatus = sth.fetch_all.first
+      recordstatus = sth.fetch_all.first[0]
       recordupdate = recordstatus.gsub('S','U')
       query = "UPDATE  WebVarsValori SET ValoreMemo = ?, RecordStatus = ? WHERE NomeVar = 'homeAreaSettings.objPage.elements(1).text' AND IdWebArea = 17"
       open
