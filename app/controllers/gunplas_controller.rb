@@ -25,7 +25,7 @@ class GunplasController < ApplicationController
   def exportCVS
     @page_title = "Esportazione"
     @gunplas = Gunpla.where("export = ?", true)
-
+    #@gunplas = Gunpla.all
     CSV.open("file.csv", "wb") do |csv|
       @gunplas.each do |gunpla|
         base = 'C:/script/gunpla/Gunpla/public/images/'
@@ -33,10 +33,13 @@ class GunplasController < ApplicationController
           gunpla.description,
           gunpla.longdescription,
           gunpla.publicprice,
+          gunpla.publicprice,
+          gunpla.datacosmic.code,
           gunpla.jancode,
           gunpla.categories.first.codiceready,
-          base + gunpla.images.first.localpath,
-          base + gunpla.images.first.localpath
+          "100"
+          #base + gunpla.images.first.localpath,
+          #base + gunpla.images.first.localpath
         ]
       end
     end
