@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831160832) do
+ActiveRecord::Schema.define(:version => 20110915162734) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20110831160832) do
   end
 
   create_table "gunplas", :force => true do |t|
+    t.integer  "gunplascalas_id"
     t.string   "code"
     t.string   "description"
     t.text     "longdescription"
@@ -73,6 +74,11 @@ ActiveRecord::Schema.define(:version => 20110831160832) do
     t.boolean  "export"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "gunplascalas", :force => true do |t|
+    t.integer "codiceready"
+    t.string  "name"
   end
 
   create_table "gunplatypes", :force => true do |t|

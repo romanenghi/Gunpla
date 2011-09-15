@@ -7,6 +7,7 @@ class Gunpla < ActiveRecord::Base
   has_one :data1999, :dependent => :destroy
   has_one :datahlj, :dependent => :destroy
   has_one :datacosmic, :dependent => :destroy
+  belongs_to :gunplascalas
   
   validates_presence_of :code
   validates_uniqueness_of :code

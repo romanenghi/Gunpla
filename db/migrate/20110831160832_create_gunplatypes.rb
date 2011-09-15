@@ -7,6 +7,7 @@ class CreateGunplatypes < ActiveRecord::Migration
       t.string :image
       t.integer :order
       t.string :sigla
+      
 
       t.timestamps
     end
