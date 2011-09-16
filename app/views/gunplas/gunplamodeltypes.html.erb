@@ -1,0 +1,20 @@
+<%= form_tag(getgunplamodeltypes_path, :method => "post") do %>
+  <%= label_tag(:string, "Importa da ready pro (attenzione - tutte le tipologie verranno cancellate)") %>
+  <%= submit_tag("Importa") %>
+<% end %>
+
+<table id="box-table-a">
+	<thead>
+		<tr>
+			<th scope="col">Nome categoria</th>
+			<th scope="col">Codice alternativo ready</th>
+		</tr>
+	</thead>
+	<% @gunplamodeltypes.each do |gunplamodeltype| %>
+	<tr>
+		<td><%= gunplamodeltype.name %></td>
+		<td><%= gunplamodeltype.codiceready %></td>
+	</tr>
+	<% end %>
+</table>
+

@@ -8,7 +8,6 @@ class CreateGunplatypes < ActiveRecord::Migration
       t.integer :order
       t.string :sigla
       
-
       t.timestamps
     end
   end

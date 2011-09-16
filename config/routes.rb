@@ -18,6 +18,10 @@ Gundam::Application.routes.draw do
   match '/utility', :to => 'utility#index'
   match '/gunplahome', :to => 'utility#gunplahome'
   match '/type', :to => 'gunplatypes#index'
+  match '/gunplascalas', :to => 'gunplas#gunplascalas'
+  match '/getgunplascalas', :to => 'gunplas#getgunplascalas'
+  match '/gunplamodeltypes', :to => 'gunplas#gunplamodeltypes'
+  match '/getgunplamodeltypes', :to => 'gunplas#getgunplamodeltypes'
   root :to => 'gunplas#index'
   
 end

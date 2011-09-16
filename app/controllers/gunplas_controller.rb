@@ -6,7 +6,8 @@ require 'nokogiri'
 
 class GunplasController < ApplicationController
   def index
-    @gunplas = Gunpla.find(:all, :include => [:images, :categories])
+    @gunplas = Gunpla.find(:all, :include => [:images, :categories, :gunplascala, :datacosmic])
+    
     @page_title = "Elenco Gundam"
     respond_to do |format|
       format.html # index.html.erb
@@ -301,6 +302,46 @@ class GunplasController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to categories_path, notice: 'Categorie importate con successo' }
+    end
+  end
+ 
+ def gunplascalas
+    @page_title = "Gestione scale"
+    @gunplascalas = Gunplascala.find(:all)
+  end
+
+  def getgunplascalas
+    @readyscalas = Accessready.new.getgunplascalas
+    @readyscalas.each do |readyscala|
+      scala = Gunplascala.where("codiceready = ?", readyscala[0]).first
+      if scala == nil then scala = Gunplascala.new end
+      scala.name = readyscala[1]
+      scala.codiceready = readyscala[0]
+      scala.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to gunplascalas_path, notice: 'Elenco "scale" importate con successo' }
+    end
+  end
+ 
+ def gunplamodeltypes
+    @page_title = "Gestione tipologie"
+    @gunplamodeltypes = Gunplamodeltype.find(:all)
+  end
+
+  def getgunplamodeltypes
+    @readytypes = Accessready.new.getgunplamodeltypes
+    @readytypes.each do |readytype|
+      type = Gunplamodeltype.where("codiceready = ?", readytype[0]).first
+      if type == nil then type = Gunplamodeltype.new end
+      type.name = readytype[1]
+      type.codiceready = readytype[0]
+      type.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to gunplamodeltypes_path, notice: 'Elenco "tipologie" importate con successo' }
     end
   end
 

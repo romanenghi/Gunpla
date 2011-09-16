@@ -11,6 +11,7 @@
 			<th scope="col">CODICE</th>
 			<th scope="col">Codice Cosmic</th>
 			<th scope="col">Descrizione</th>
+			<th scope="col">Scala</th>
 			<th scope="col">Prezzo al pubblico</th>
 			<th scope="col">Jan Code</th>
 		</tr>
@@ -26,8 +27,9 @@
 			<td><%= link_to 'Destroy', gunpla, confirm: 'Are you sure?', method: :delete %></td>
 			<td><%= (gunpla.images.first == nil) ? () : image_tag(gunpla.images.first.name, :class => "thumb") %></td>
 			<td><%= gunpla.code %></td>
-			<td><%= gunpla.datacosmic.code %></td>
+			<td><%= (gunpla.datacosmic == nil) ? ("ND") : (gunpla.datacosmic.code) %></td>
 			<td><%= gunpla.description %></td>
+			<td><%= (gunpla.gunplascala == nil) ? ("ND") : (gunpla.gunplascala.name) %></td>
 			<td><%= gunpla.publicprice %></td>
 			<td><%= gunpla.jancode %></td>
 			<td><%= (gunpla.categories.first == nil) ? () : gunpla.categories.first.name %></td>

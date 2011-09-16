@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915162734) do
+ActiveRecord::Schema.define(:version => 20110916155028) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -64,8 +64,16 @@ ActiveRecord::Schema.define(:version => 20110915162734) do
     t.datetime "updated_at"
   end
 
+  create_table "gunplamodeltypes", :force => true do |t|
+    t.integer  "codiceready"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gunplas", :force => true do |t|
-    t.integer  "gunplascalas_id"
+    t.integer  "gunplascala_id"
+    t.integer  "gunplamodeltype_id"
     t.string   "code"
     t.string   "description"
     t.text     "longdescription"

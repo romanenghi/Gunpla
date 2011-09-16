@@ -35,6 +35,25 @@ class Accessready
     return @categories
   end
 
+ def getgunplascalas
+    if @connection == nil then self.open end
+    sth = @connection.prepare ("SELECT * FROM `Articoli tipi`")
+    sth.execute
+    @gunplascalas = sth.fetch_all
+    self.close
+    return @gunplascalas
+  end
+  
+  
+ def getgunplamodeltypes
+    if @connection == nil then self.open end
+    sth = @connection.prepare ("SELECT * FROM `Colori`")
+    sth.execute
+    @gunplamodeltypes = sth.fetch_all
+    self.close
+    return @gunplamodeltypes
+  end
+    
   # Recupera dal database tutti i prodotti corrispondenti a un certo tipo (type), opzionalmente
   # con l'immagine di anteprima (bool miniatures)
   def getproductstype(idtype)

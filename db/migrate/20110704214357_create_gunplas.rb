@@ -1,7 +1,8 @@
 class CreateGunplas < ActiveRecord::Migration
   def self.up
     create_table :gunplas do |t|
-    t.integer :gunplascalas_id
+    t.integer :gunplascala_id
+    t.integer :gunplamodeltype_id
 	  t.string :code
 	  t.string :description
 	  t.text :longdescription

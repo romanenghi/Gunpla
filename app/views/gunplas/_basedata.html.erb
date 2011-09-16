@@ -19,8 +19,9 @@
 	<% end %>
 	<%= form.inputs :name => "Advanced Options", :id => "advanced" do %>
 	<%= form.input :longdescription,       :input_html => { :class => 'autogrow', :rows => 10, :cols => 60} %>
-	<%= form.input :categories,  :as => :select,      :collection => Category.find(:all) %>
-	<%= form.input :gunplascalas, :collection => Gunplascala.find(:all) %>
+	<%= form.input :categories,  :as => :select,      :collection => Category.find(:all, :order => "name asc") %>
+	<%= form.input :gunplamodeltype, :as => :select, :collection => Gunplamodeltype.find(:all, :order => "name desc") %>
+	<%= form.input :gunplascala, :as => :select, :collection => Gunplascala.find(:all, :order => "name asc") %>
 	<%= form.input :jancode %>
 	<%= form.input :export %>
 	<% end %>
