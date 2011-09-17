@@ -1,3 +1,4 @@
+
 <%= semantic_form_for @gunpla do |form| %>
 <% if @gunpla.errors.any? %>
 <div id="errorExplanation">
@@ -15,12 +16,13 @@
 	<%= form.inputs "Basic", :id => "basic" do %>
 	<%= form.input :code %>
 	<%= form.input :description %>
+    <div id ="suggerimento">ciao</div>
 	<%= form.input :publicprice %>
 	<% end %>
 	<%= form.inputs :name => "Advanced Options", :id => "advanced" do %>
 	<%= form.input :longdescription,       :input_html => { :class => 'autogrow', :rows => 10, :cols => 60} %>
 	<%= form.input :categories,  :as => :select,      :collection => Category.find(:all, :order => "name asc") %>
-	<%= form.input :gunplamodeltype, :as => :select, :collection => Gunplamodeltype.find(:all, :order => "name desc") %>
+	<%= form.input :gunplamodeltype, :as => :select, :collection => Gunplamodeltype.find(:all, :order => "name asc") %>
 	<%= form.input :gunplascala, :as => :select, :collection => Gunplascala.find(:all, :order => "name asc") %>
 	<%= form.input :jancode %>
 	<%= form.input :export %>

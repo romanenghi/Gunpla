@@ -139,6 +139,9 @@ class GunplasController < ApplicationController
       productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first
       (productseriestitle == nil) ? (@datahlj.productseriestitle = "non disponibile") : (@datahlj.productseriestitle = productseriestitle.content)
 
+      producttype = doc.xpath('//a[@class="current"]').first
+      (producttype == nil) ? (@datahlj.producttype = "non disponibile") : (@datahlj.producttype = producttype.content)
+ 
       @gunpla.datahlj = @datahlj
       @gunpla.save
       @status = "Importazione avvenuta con successo"

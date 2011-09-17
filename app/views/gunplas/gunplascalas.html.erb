@@ -1,5 +1,5 @@
-<%= form_tag(getgunplamodeltypes_path, :method => "post") do %>
-  <%= label_tag(:string, "Importa da ready pro (attenzione - tutte le tipologie)") %>
+<%= form_tag(getgunplascalas_path, :method => "post") do %>
+  <%= label_tag(:string, "Importa da ready pro (attenzione - tutte le scale)") %>
   <%= submit_tag("Importa") %>
 <% end %>
 
@@ -10,10 +10,10 @@
 			<th scope="col">Codice  ready</th>
 		</tr>
 	</thead>
-	<% @gunplamodeltypes.each do |gunplamodeltype| %>
+	<% @gunplascalas.each do |gunplascala| %>
 	<tr>
-		<td><%= gunplamodeltype.name %></td>
-		<td><%= gunplamodeltype.codiceready %></td>
+		<td><%= gunplascala.name %></td>
+		<td><%= gunplascala.codiceready %></td>
 	</tr>
 	<% end %>
 </table>

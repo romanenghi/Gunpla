@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20110916155028) do
     t.string   "image"
     t.text     "longdescription"
     t.string   "productseriestitle"
+    t.string   "producttype"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

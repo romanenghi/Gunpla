@@ -8,6 +8,7 @@ class CreateDatahljs < ActiveRecord::Migration
       t.string :image
       t.text :longdescription
       t.string :productseriestitle
+      t.string :producttype
       t.timestamps
     end
   end
