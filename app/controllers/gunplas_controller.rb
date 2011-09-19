@@ -6,7 +6,7 @@ require 'nokogiri'
 
 class GunplasController < ApplicationController
   def index
-    @gunplas = Gunpla.find(:all, :include => [:images, :categories, :gunplascala, :datacosmic])
+    @gunplas = Gunpla.find(:all, :include => [:images, :categories, :gunplascala, :datacosmic, :gunplamodeltype])
     
     @page_title = "Elenco Gundam"
     respond_to do |format|

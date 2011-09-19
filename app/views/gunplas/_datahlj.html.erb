@@ -1,23 +1,11 @@
-<table id="box-table-a">
-	<thead>
-		<tr>
-			<th scope="col">Codice Prodotto</th>
-			<th scope="col">Description</th>
-			<th scope="col">Type</th>
-			<th scope="col">Serie</th>
-			<th scope="col">JanCode</th>
-			<th scope="col">Long Description</th>
-			<th scope="col">Type</th>
-			<th scope="col">Image</th>
-		</tr>
-	</thead>
-	<tr>
-		<td class='draggable'><%= link_to(@gunpla.datahlj.code,"http://www.hlj.com/product/#{@gunpla.datahlj.code}")%></td>
-		<td><%= @gunpla.datahlj.description %></td>
-		<td><%= @gunpla.datahlj.producttype %></td>
-		<td><%= @gunpla.datahlj.productseriestitle %></td>
-		<td><%= @gunpla.datahlj.jancode %></td>
-		<td><%= @gunpla.datahlj.longdescription %></td>
-		<td><%= image_tag(@gunpla.datahlj.image) %></td>
-	</tr>
-</table>
+<div id="datahlj">
+<ul>
+<li><span class="grey">Codice prodotto: </span>	<%= link_to(@gunpla.datahlj.code,"http://www.hlj.com/product/#{@gunpla.datahlj.code}")%></li>
+<li><span class="grey">Description: </span><%= @gunpla.datahlj.description %> </li>
+<li><span class="grey">Type: </span><%= @gunpla.datahlj.producttype %> </li>
+<li><span class="grey">Serie:</span> <%= @gunpla.datahlj.productseriestitle %></li>
+<li><span class="grey">JanCode:</span> <%= @gunpla.datahlj.jancode %></li>
+<li><span class="grey">Long Description: </span><%= @gunpla.datahlj.longdescription %> </li>
+<li><%= image_tag(@gunpla.datahlj.image) %> </li>
+</ul>
+</div>

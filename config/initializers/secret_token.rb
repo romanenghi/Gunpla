@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Gundam::Application.config.secret_token = '535710147dedda9152f969629e92bddff374212113c7f2434c193a3bda523a71c4612b52146a32d531c16d2e07d6b43b700779a6000ae84f041bd845660e392c'
+Gundam::Application.config.secret_token = '88337fadaa7f09da566ebcf80efef1f396ae7c061644604fe0db79b502a7f1f6f2877588286582e87773d67c12a03ffacccb2262c4c9a29d90b62ff279616f60'

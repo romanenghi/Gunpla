@@ -14,6 +14,8 @@
 			<th scope="col">Scala</th>
 			<th scope="col">Prezzo al pubblico</th>
 			<th scope="col">Jan Code</th>
+			<th scope="col">Serie</th>
+			<th scope="col">Tipo</th>
 		</tr>
 	</thead>
 	
@@ -33,6 +35,7 @@
 			<td><%= gunpla.publicprice %></td>
 			<td><%= gunpla.jancode %></td>
 			<td><%= (gunpla.categories.first == nil) ? () : gunpla.categories.first.name %></td>
+			<td><%= (gunpla.gunplamodeltype == nil) ? () : gunpla.gunplamodeltype.name %></td>
 			<td><%= (gunpla.export == true) ? ("Selezionato per export") : () %></td>
 	
 		</tr>
