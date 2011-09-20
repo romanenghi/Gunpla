@@ -1,5 +1,7 @@
 <h3>Anagrafica di base</h3>
-<p class="notice"><%= notice %></p>
+<p class="notice">
+	<%= notice %>
+</p>
 <div id="baseData">
 	<%= render "basedata"%>
 </div>
@@ -13,36 +15,36 @@
 		<%= submit_tag("Search") %>
 		<% end %>
 	</div>
-	<div id="googleresults">
-    </div>
-    <div id="tabs">
-	<ul>
-		<li>
-			<a href="#tabs-1">Cosmic Data</a>
-		</li>
-		<li>
-			<a href="#tabs-2">HljData</a>
-		</li>
-		<li>
-			<a href="#tabs-3">ReadyData</a>
-		</li>
-	</ul>
-	<div id="tabs-1">
-		<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
+	<div id="googleresults"></div>
+	<div id="tabs">
+		<ul>
+			<li>
+				<a href="#tabs-1">Cosmic Data</a>
+			</li>
+			<li>
+				<a href="#tabs-2">HljData</a>
+			</li>
+			<li>
+				<a href="#tabs-3">ReadyData</a>
+			</li>
+		</ul>
+		<div id="tabs-1">
+			<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
+		</div>
+		<div id="tabs-2">
+			<%= form_tag("/getHljData", :remote => true) do %>
+			<%= label_tag(:code, "Codice HLJ:") %>
+			<%= text_field_tag(:code, @gunpla.code) %>
+			<%= hidden_field_tag(:gunplaid, @gunpla.id) %>
+			<%= submit_tag("Search", :class => 'hlj') %>
+			<% end %>
+			<%= if @gunpla.datahlj != nil then render "datahlj" end %>
+		</div>
+		<div id="tabs-3">
+			<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
+			<%= if @readyproduct != nil then render "dataready" end %>
+		</div>
 	</div>
-	<div id="tabs-2">
-		<%= form_tag("/getHljData", :remote => true) do %>
-		<%= label_tag(:code, "Codice HLJ:") %>
-		<%= text_field_tag(:code, @gunpla.code) %>
-		<%= hidden_field_tag(:gunplaid, @gunpla.id) %>
-		<%= submit_tag("Search", :class => 'hlj') %>
-		<% end %>
-		<%= if @gunpla.datahlj != nil then render "datahlj" end %>
-	</div>
-	<div id="tabs-3">
-		<%= link_to "recupera da Ready Pro", "/getReadyData?&id=#{@gunpla.id}", :class=>'ready', :remote => true%>
-		<%= if @readyproduct != nil then render "dataready" end %>
-	</div>
-</div>
+	<%= link_to "Back","#{gunplas_path}##{@gunpla.id - 5}" %>
 </div>
 

@@ -23,7 +23,7 @@
 	<tbody>
 	<% if @gunplas.length > 0 %>
 	<% @gunplas.each do |gunpla| %>
-		<tr class='<%= if gunpla.export == true then "selected" 
+		<tr id='<%= gunpla.id %>'class='<%= if gunpla.export == true then "selected" 
 		else "unselected" end %>'>
 			<td><%= link_to 'Show', gunpla %></td>
 			<td><%= link_to 'Destroy', gunpla, confirm: 'Are you sure?', method: :delete %></td>

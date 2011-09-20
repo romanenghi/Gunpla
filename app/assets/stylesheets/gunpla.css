@@ -124,6 +124,11 @@ nav ul li a:hover {
 	background: #d0dafd;
 	color: #339;
 }
+
+#box-table-a tr.selected td {
+	background: #CEF6CE;
+}
+
 #box-table-b {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
@@ -150,9 +155,7 @@ nav ul li a:hover {
 	border-left: 1px solid #aabcfe;
 	color: #669;
 }
-tr.selected {
-	color: red;
-}
+
 #datahlj {
 	/* Firefox 3.6 and earlier */
 }

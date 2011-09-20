@@ -37,7 +37,7 @@ class GunplasController < ApplicationController
           gunpla.publicprice,
           gunpla.datacosmic.code,
           gunpla.jancode,
-          gunpla.categories.first.codiceready,
+          (gunpla.categories == []) ? ("") : (gunpla.categories.first.codiceready),
           "100"
           #base + gunpla.images.first.localpath,
           #base + gunpla.images.first.localpath
@@ -139,7 +139,9 @@ class GunplasController < ApplicationController
       productseriestitle = doc.xpath('//a[@class="productseriestitle"]').first
       (productseriestitle == nil) ? (@datahlj.productseriestitle = "non disponibile") : (@datahlj.productseriestitle = productseriestitle.content)
 
-      producttype = doc.xpath('//a[@class="current"]').first
+      
+      #producttype = doc.xpath('//div[@id="breadcrumbs"]').first
+       producttype = doc.xpath('//a[@class="current"]').first
       (producttype == nil) ? (@datahlj.producttype = "non disponibile") : (@datahlj.producttype = producttype.content)
  
       @gunpla.datahlj = @datahlj
