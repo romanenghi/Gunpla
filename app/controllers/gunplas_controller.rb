@@ -150,9 +150,10 @@ class GunplasController < ApplicationController
     end
 
     respond_to do |format|
-      format.js
       format.html
+      format.js {render :content_type => 'text/javascript'}
     end
+    
   end
 
   def import1999Data

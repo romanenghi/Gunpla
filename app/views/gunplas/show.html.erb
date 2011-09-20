@@ -31,7 +31,7 @@
 		<%= if @gunpla.datacosmic != nil then render "datacosmic" end %>
 	</div>
 	<div id="tabs-2">
-		<%= form_tag("/getHljData", :method => "get", :remote => true) do %>
+		<%= form_tag("/getHljData", :remote => true) do %>
 		<%= label_tag(:code, "Codice HLJ:") %>
 		<%= text_field_tag(:code, @gunpla.code) %>
 		<%= hidden_field_tag(:gunplaid, @gunpla.id) %>

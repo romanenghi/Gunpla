@@ -1,5 +1,4 @@
-
-  $(".hlj")
+$(".hlj")
     .bind("ajaxSuccess" , function(){
         $("#tabs-2").html('<%= @status %><%=escape_javascript(render 'datahlj')%>');
     })
