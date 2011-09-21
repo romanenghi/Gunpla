@@ -32,13 +32,16 @@ class GunplasController < ApplicationController
         base = 'C:/script/gunpla/Gunpla/public/images/'
         csv << [gunpla.code,
           gunpla.description,
+          gunpla.publicprice,
+          (gunpla.publicprice.to_f/1.21).round(4),
           gunpla.longdescription,
-          gunpla.publicprice,
-          gunpla.publicprice,
-          gunpla.datacosmic.code,
-          gunpla.jancode,
           (gunpla.categories == []) ? ("") : (gunpla.categories.first.codiceready),
-          "100"
+          (gunpla.gunplamodeltype == nil ) ? ("") : (gunpla.gunplamodeltype.name),
+          (gunpla.gunplascala  == nil ) ? ("") : (gunpla.gunplascala.name),
+          gunpla.jancode,
+          gunpla.datacosmic.code,
+          "100",
+          1
           #base + gunpla.images.first.localpath,
           #base + gunpla.images.first.localpath
         ]
@@ -213,7 +216,7 @@ class GunplasController < ApplicationController
         datacosmic.code = row[0].strip # Seleziona la colonna n. 0, corrispondente al codice cosmic
         datacosmic.description = row[2].strip # Seleziona la colonna n. 2, corrispondente alla descrizione secondo cosmic
         datacosmic.jancode = row[3].strip # Importa il cosmic Jan Code
-        datacosmic.publicprice = row[5][/\d*,\d*/].to_f #Importa il prezzo al pubblico consigliato da cosmic
+        datacosmic.publicprice = row[5].gsub(",",".").to_f #Importa il prezzo al pubblico consigliato da cosmic
         gunplacode = cosmicToHlj(datacosmic.jancode)
         if Gunpla.where("code = ?",gunplacode).count == 0  #se non esiste il gunpla corrispondente lo crea 
           gunpla = Gunpla.new
@@ -227,7 +230,7 @@ class GunplasController < ApplicationController
           gunpla = Gunpla.where("code = ?",gunplacode).first #se esiste il gunpla. ci associa i dati di cosmic
         gunpla.datacosmic = datacosmic
         #aggiorna in ogni caso i prezzi
-        gunpla.datacosmic.publicprice = row[5][/\d*,\d*/].to_f
+        gunpla.datacosmic.publicprice = row[5].gsub(",",".").to_f
         gunpla.publicprice = datacosmic.publicprice
         gunpla.save
         end
