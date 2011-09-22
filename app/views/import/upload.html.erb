@@ -1,0 +1,5 @@
+<%= @uploaded_io.original_filename %>
+<%= form_tag({:action => :parse}) do %>
+<%= select_tag "colors", "<option>Red</option><option>Green</option><option>Blue</option>".html_safe, :multiple => true %>
+  <%= submit_tag("Carica") %>
+<% end %>

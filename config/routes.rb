@@ -1,4 +1,7 @@
 Gundam::Application.routes.draw do
+  get "import/import"
+  match '/upload', :to => 'import#upload'
+  match '/parse', :to => 'import#parse'
   resources :gunplatypes
   resources :gunplas
   match '/cosmicimport', :to => 'gunplas#cosmicimport'

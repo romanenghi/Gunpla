@@ -131,7 +131,9 @@ class GunplasController < ApplicationController
       @datahlj.description = docJson['itemName']
       @datahlj.jancode = docJson['janCode']
 
-      doc = Nokogiri.HTML(open("http://www.hlj.com/product/#{@datahlj.code}"))
+      html = open("http://www.hlj.com/product/#{@datahlj.code}")
+      doc = Nokogiri::HTML(html.read)
+      doc.encoding = 'utf-8'
 
       image = doc.xpath('//div[@id="inner-content"]/table/tr/td/img').first['style'][/'.*'/]
       (image == nil) ? (@datahlj.image = "non disponibile") : (@datahlj.image = image[1..-2])

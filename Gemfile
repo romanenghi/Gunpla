@@ -17,8 +17,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-
+gem "mysql"
+gem 'yaml_db'
 gem 'nokogiri'
 
 gem 'formtastic'
