@@ -1,5 +1,36 @@
-<%= @uploaded_io.original_filename %>
-<%= form_tag({:action => :parse}) do %>
-<%= select_tag "colors", "<option>Red</option><option>Green</option><option>Blue</option>".html_safe, :multiple => true %>
+
+<%= form_tag({:action => :upload}, :multipart => true) do %>
+  <%= file_field_tag 'csv' %>
   <%= submit_tag("Carica") %>
 <% end %>
+
+<p>Anteprima del file <b><%= @uploaded_io.original_filename %></b> (prima 15 righe)</p>
+<%= form_tag({:action => :parse}) do %>
+<table id = "box-table-a">
+<tr>
+	<td></td>
+	<% @arr_of_arrs[0].length.times do |header| %>
+	<td>
+		<%= select_tag "importoption", options_from_collection_for_select(@importoption, "id", "name"), :multiple => true %>
+	</td>
+    <% end %>
+</tr>
+<% n = 0 %>
+<% @arr_of_arrs.take(50).each do |row| %>
+<% n= n + 1 %>
+<tr>
+	<td>
+	<b><%= n %></b>
+	</td>
+	<% row.each do |cell| %>
+	<td>
+		<b><%= cell %></b>
+	</td>
+    <% end %>
+</tr>
+<% end %>
+</table>
+<%= submit_tag("Carica") %>
+<% end %>
+
+
