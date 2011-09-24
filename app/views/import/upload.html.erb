@@ -9,14 +9,16 @@
 <table id = "box-table-a">
 <tr>
 	<td></td>
+	<% n = 0 %>
 	<% @arr_of_arrs[0].length.times do |header| %>
 	<td>
-		<%= select_tag "importoption", options_from_collection_for_select(@importoption, "id", "name"), :multiple => true %>
+		<%= select_tag "importoption[#{n}]", options_from_collection_for_select(@importoption, "id", "name") %>
 	</td>
+	<% n= n + 1 %>
     <% end %>
 </tr>
 <% n = 0 %>
-<% @arr_of_arrs.take(50).each do |row| %>
+<% @arr_of_arrs.take(15).each do |row| %>
 <% n= n + 1 %>
 <tr>
 	<td>
@@ -24,7 +26,7 @@
 	</td>
 	<% row.each do |cell| %>
 	<td>
-		<b><%= cell %></b>
+		<%= cell %>
 	</td>
     <% end %>
 </tr>
